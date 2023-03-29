@@ -60,7 +60,7 @@
     let arr= request_2.map(course=>course.id+"-"+course.title+"-"+course.rating )
     console.log(arr)
     //yêu cầu 3:
-    let newArr=[courses,...addedCourses]
+    let newArr=[...courses,...addedCourses]
     console.log(newArr)
 </script>
 </body>
