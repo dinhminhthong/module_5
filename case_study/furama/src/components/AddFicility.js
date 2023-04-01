@@ -3,14 +3,14 @@ import React, {Component} from 'react';
 class AddFicility extends Component {
     render() {
         return (
-            <>
+            <div>
                 <div className="modal " tabIndex="-1" id="addmodal">
                     <div className="modal-dialog modal-xl">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title">
-                                    Thêm mới dịch vụ{" "}
-                                    <i className="fa-sharp fa-solid fa-user"></i>
+                                    Thêm mới dịch vụ{' '}
+                                    <i className="fa fa-user" aria-hidden="true"></i>
                                 </h5>
                                 <button
                                     type="button"
@@ -21,7 +21,7 @@ class AddFicility extends Component {
                             </div>
                             <div className="modal-body">
                                 <form method="post">
-                                    <input type="hidden" name="validate" value="add" />
+                                    <input type="hidden" name="validate" value="add"/>
                                     <div className="mb-3 row">
                                         <label className="col-sm-2 col-form-label">
                                             Loại Dịch Vụ
@@ -29,8 +29,7 @@ class AddFicility extends Component {
                                         <div className="col-sm-10">
                                             <select
                                                 className="form-control"
-                                                onChange={this.handleFacilityChange}
-                                                value={this.state.facilityType}
+                                                onChange={() => this.facility()}
                                                 id="selectValue"
                                             >
                                                 <option className="form-control" value="1">
@@ -50,13 +49,15 @@ class AddFicility extends Component {
                                             Tên Dịch Vụ
                                         </label>
                                         <div className="col-sm-10">
-                                            <input type="text" className="form-control" />
+                                            <input type="text" className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="mb-3 row">
-                                        <label className="col-sm-2 col-form-label">Diện Tích</label>
+                                        <label className="col-sm-2 col-form-label">
+                                            Diện Tích
+                                        </label>
                                         <div className="col-sm-10">
-                                            <input type="number" className="form-control" />
+                                            <input type="number" className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="mb-3 row">
@@ -64,7 +65,7 @@ class AddFicility extends Component {
                                             Chi Phí Thuê
                                         </label>
                                         <div className="col-sm-10">
-                                            <input type="number" className="form-control" />
+                                            <input type="number" className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="mb-3 row">
@@ -72,7 +73,7 @@ class AddFicility extends Component {
                                             Số Người Tối Đa
                                         </label>
                                         <div className="col-sm-10">
-                                            <input type="number" className="form-control" />
+                                            <input type="number" className="form-control"/>
                                         </div>
                                     </div>
                                     <div className="mb-3 row">
@@ -85,7 +86,60 @@ class AddFicility extends Component {
                                                 <option className="form-control" value="2">
                                                     Month
                                                 </option>
-            </>
+                                                <option className="form-control" value="3">
+                                                    Day
+                                                </option>
+                                                <option className="form-control" value="4">
+                                                    Hour
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div className="mb-3 row" id="standardAdd">
+                                        <label className="col-sm-2 col-form-label">
+                                            Tiêu Chuẩn Phòng
+                                        </label>
+                                        <div className="col-sm-10">
+                                            <input type="text" className="form-control"/>
+                                        </div>
+                                        <div className="mb-3 row" id="descriptionAdd">
+                                            <label className="col-sm-2 col-form-label">Mô Tả Khác</label>
+                                            <div className="col-sm-10">
+                                                <input type="text" className="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div className="mb-3 row" id="poolAreaAdd">
+                                            <label className="col-sm-2 col-form-label">Diện Tích Hồ Bơi</label>
+                                            <div className="col-sm-10">
+                                                <input type="number" className="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div className="mb-3 row" id="numberOfFloorAdd">
+                                            <label className="col-sm-2 col-form-label">Số Tầng</label>
+                                            <div className="col-sm-10">
+                                                <input type="number" className="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div className="mb-3 row d-none" id="addFreeService">
+                                            <label className="col-sm-2 col-form-label">Dịch Vụ Miễn Phí</label>
+                                            <div className="col-sm-10">
+                                                <input type="text" className="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary clearError"
+                                                    data-bs-dismiss="modal">Hủy
+                                            </button>
+                                            <button type="submit" className="btn btn-primary">Xác Nhận</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
