@@ -1,13 +1,11 @@
 import Counter1 from "./component/Counter1";
 import Counter2 from "./component/Counter2";
+import DoanSo from "./component/DoanSo";
 
 function App() {
     return (
         <div>
-            <tr>
-              <td><Counter1/></td>
-                <td><Counter2/></td>
-            </tr>
+        <DoanSo/>
 
         </div>
     )
