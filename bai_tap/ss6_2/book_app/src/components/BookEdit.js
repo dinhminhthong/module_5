@@ -25,7 +25,6 @@ export default function BookEdit() {
                         editBook(values.id, values)
 
                     }, 500)
-
                 }}
             >
 
