@@ -52,7 +52,6 @@ export default function Books() {
                                     </tr>
                                 ))
                             }
-
                             </tbody>
                         </table>
                     </div>

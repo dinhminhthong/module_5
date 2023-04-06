@@ -1,17 +1,27 @@
-import {Link,NavLink,Route,Routes} from 'react-router-dom';
-import TodoList from "./components/TodoList";
-
+import React from 'react';
+import { Link, NavLink, Route, Switch } from 'react-router-dom';
+import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
 
 function App() {
-  return (
-    <>
-  <NavLink to='/'>List</NavLink>
-      <NavLink to='/create' className='ms-3'>Create</NavLink>
-      <Routes>
-        <Route path='/' element={<TodoList/>}/>
-      </Routes>
-    </>
-  );
+    return (
+        <>
+            <NavLink to="/" activeClassName="active">
+                List
+            </NavLink>
+            <NavLink to="/create" activeClassName="active" className="ms-3">
+                Create
+            </NavLink>
+            <Switch>
+                <Route exact path="/">
+                    <TodoList />
+                </Route>
+                <Route path="/create">
+                    <TodoForm />
+                </Route>
+            </Switch>
+        </>
+    );
 }
 
 export default App;

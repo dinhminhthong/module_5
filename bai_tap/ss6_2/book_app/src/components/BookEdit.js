@@ -26,8 +26,6 @@ export default function BookEdit() {
 
                     }, 500)
 
-
-
                 }}
             >
 
@@ -73,7 +71,6 @@ export default function BookEdit() {
                                                     wrapperClass
                                                 />
                                                 : <button className='btn btn-danger' type="submit">  Submit  </button>
-
                                         }
                                     </div>
                                 </div>
