@@ -1,12 +1,6 @@
 {
   "book": [
     {
-      "id": 1,
-      "name": "Cho tôi xin vé về tuổi thơ",
-      "author": "nguyễn nhật ánh",
-      "price": 1000
-    },
-    {
       "id": 2,
       "name": "sherlock holme",
       "author": "conan",
