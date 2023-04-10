@@ -1,0 +1,33 @@
+{
+ "book": [
+   {
+      "id": 1,
+      "name":"tôi thấy hoa vàng trên cỏ xanh",
+      "author": "nguyễn nhật ánh",
+     "price": 20000,
+     "typeId": 1
+
+   },
+   {
+     "id": 2,
+     "name":"SherLock Holmes",
+     "author": "conan doil",
+     "price": 40000,
+     "typeId": 2
+   }
+ ],
+  "bookType": [
+    {
+      "id": 1,
+      "type": "thiếu nhi"
+    },
+    {
+      "id": 2,
+      "type": "trinh thám"
+    },
+    {
+      "id": 3,
+      "type": "action"
+    }
+  ]
+}
