@@ -1,0 +1,24 @@
+{
+  "product": [
+    {
+      "id": 1,
+      "name": "latop",
+      "idType": 1
+    },
+    {
+      "id": 1,
+      "name": "latop",
+      "idType": 1
+    }
+  ],
+  "productType": [
+    {
+      "id": 1,
+      "type": "loại 1"
+    },
+    {
+      "id": 1,
+      "type": "loại 2"
+    }
+  ]
+}
