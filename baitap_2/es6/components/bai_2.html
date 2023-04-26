@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Tính tổng bội số</title>
+</head>
+<body>
+<label for="input-k">Nhập vào số k:</label>
+<input type="number" id="input-k" />
+<button onclick="calculateSumMultiples()">Tính toán</button>
+<p id="result"></p>
+
+<script>
+    function calculateSumMultiples() {
+        let k = parseInt(document.getElementById("input-k").value);
+        let sumMultiples = 0;
+        for (let i = 1; i < 20; i++) {
+            if (i % k === 0 && i !== k) {
+                sumMultiples += i;
+            }
+        }
+        document.getElementById("result").innerHTML = `Tổng các bội số của ${k} là: ${sumMultiples}`;
+    }
+</script>
+</body>
+</html>

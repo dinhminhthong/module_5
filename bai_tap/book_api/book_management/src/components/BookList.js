@@ -43,7 +43,7 @@ function BookList() {
                                 <td>{value.price}</td>
                                 <td>
                                     {
-                                        typeBooks.filter(bt => bt.id === value.typeId)[0]?.name
+                                        typeBooks.filter(bt => bt.id === value.typeId)[0]?.type
                                     }
                                 </td>
                             </tr>

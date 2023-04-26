@@ -1,0 +1,27 @@
+{
+  "tivi": [
+    {
+      "id": 1,
+      "name": "GL oled tivi",
+      "producer": "LG",
+      "tiviTypeId": 1
+    },
+    {
+      "id": 2,
+      "name": "Sam sung galaxy",
+      "producer": "SS",
+      "tiviTypeId": 2
+    }
+  ],
+  "tiviType":
+  [
+    {
+      "id": 1,
+      "type": "tivi smart"
+    },
+    {
+      "id": 2,
+      "type":"tivi siêu mỏng"
+    }
+  ]
+}
