@@ -1,0 +1,31 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "name": "tôi thấy hoa vàng trên cỏ xanh",
+      "author": "nguyễn nhật ánh",
+      "typeBookId": 2,
+      "date": "14-02-2001"
+    },
+    {
+      "id": 2,
+      "name": "cho tôi xin vé về tuổi thơ",
+      "author": "nguyễn nhật ánh",
+      "typeBookId": 1,
+      "date": "24-04-2001"
+    }
+  ],
+  "typeBook": [
+    {
+      "id": 1,
+      "type": "tuổi thơ"
+    },
+
+    {
+      "id": 2,
+      "type": "trinh thám"
+    }
+  ]
+
+
+}
