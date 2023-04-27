@@ -20,3 +20,6 @@ export const findAllType = async ()=>{
 export const createBook = (book) =>{
     return axios.post(`${BOOK_URL}/books`,book);
 };
+export const deleteBook =(id)=>{
+    return axios.delete(`${BOOK_URL}/books/${id}`)
+}
