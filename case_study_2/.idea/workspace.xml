@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="53759d63-596b-42cb-8426-90916e441805" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/furama/src/components/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/furama/src/components/Navigation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../baitap_2/ss2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../baitap_2/ss2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../case_study/faciliti.html" beforeDir="false" afterPath="$PROJECT_DIR$/../case_study/faciliti.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +19,7 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -52,10 +57,22 @@
       <option name="presentableId" value="Default" />
       <updated>1682563046456</updated>
       <workItem from="1682563049090" duration="709000" />
+      <workItem from="1682673112028" duration="1139000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
