@@ -1,51 +1,35 @@
 import {useEffect, useState} from "react";
 import * as bookService from "../service/BookService"
 function BookList() {
-    const [book,setBoook]= useState([]);
-    const [type,setType]=useState([])
-
+    const [book, setBook]= useState([])
+    const [type,setType] = useState([])
     useEffect( ()=>{
-        let getAll = async () =>{
+        const getAll = async ()=>{
             let result = await bookService.findAll();
-            setBoook (result)
-            return book
+            setBook (result)
+            return book;
         }
-        let getALLTypes = async ()=>{
-            let result = await bookService.findAllType();
-            setType (result)
+        const getAllType = async ()=>{
+            let result = await bookService.findAllType()
+            setBook (result)
             return type;
         }
         getAll();
-        getALLTypes();
+        getAllType();
     },[])
-    return(
+    return (
         <>
-            <h1 className='text-center'>List Book</h1>
-            <table className='table table-striped'>
+            <h1 className='text-center'>LIST BOOK</h1>
+            <table>
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Tên</th>
-                    <th>Loại Sách</th>
-                    <th>Ngày suất bản</th>
-                    <th>Tác giả</th>
+                    <th>NAME</th>
+                    <th>TYPE BOOK</th>
+                    <th>AUTHOR</th>
+                    <th></th>
                 </tr>
                 </thead>
-<tbody>
-{
-    book.map( (value,index)=>(
-        <tr key={index}>
-            <td>{index}</td>
-            <td>{value.name}</td>
-            <td>{
-                type.filter(bo =>bo.id === value.typeBookId)[0]?.type
-            }</td>
-            <td>{value.date}</td>
-            <td>{value.author}</td>
-        </tr>
-    ))
-}
-</tbody>
             </table>
             </>
     )
