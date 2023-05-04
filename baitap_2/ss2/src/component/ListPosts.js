@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import * as postsService from "../service/PostsService"
 import {useNavigate} from "react-router-dom";
 import NavLink from "react-bootstrap/NavLink";
+import ModalDelete from "./ModalDelete";
 function PostList() {
     let navigate =useNavigate()
     const [post,setPost]=useState([])
