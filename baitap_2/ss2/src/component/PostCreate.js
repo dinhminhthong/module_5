@@ -41,7 +41,7 @@ function PostCreate() {
                                 const create = async () => {
                                     await postsService.save(value)
                                     setSubmitting(false);
-                                    toast("thêm mới thành công");
+                                    toast("Chỉnh sửa thành công");
                                     navigate('/')
                                 }
                                 create();
