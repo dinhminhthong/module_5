@@ -4,8 +4,23 @@ import * as Yup from 'yup';
 import * as postsService from "../service/PostsService";
 import {ToastContainer, toast} from 'react-toastify'
 import {RotatingLines} from 'react-loader-spinner'
+import {useParams} from "react-router";
+import {useEffect, useState} from "react";
 function PostCreate() {
     let navigate = useNavigate();
+    let param =useParams()
+    const [post,setPost] = useState();
+    useEffect(() => {
+        const fetchApi = async () => {
+            const detail = await postsService.findById(param.id)
+            setPost(detail)
+        }
+        fetchApi()
+    }, [])
+    console.log(post)
+    if(!post){
+        return null
+    }
     return (
         <>
             <h1>CREATE POSTS</h1>
