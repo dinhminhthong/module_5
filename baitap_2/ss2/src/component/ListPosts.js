@@ -16,6 +16,14 @@ function PostList() {
             }
             getAll()
     },[])
+    const handleEdit = (id) => {
+        navigate(`/update/${id}`)
+    }
+    const getIdAndTitle = (id, name) => {
+        setDeleteId(id)
+        setDeleteName(name)
+    }
+    let count = 1
     return (
         <>
             <h1 className="text-center">List Posts</h1>
@@ -48,6 +56,21 @@ function PostList() {
                 }
                 </tbody>
             </table>
+            <ModalDelete
+                id={deleteId}
+                name={deleteName}
+                getList={
+                    () => {
+                        console.log('getList')
+                        const abc = async () => {
+                            const rs = await post.findAll('')
+                            console.log(rs);
+                            setPost(rs)
+                        }
+                        abc()
+                    }
+                }
+                />
             </>
     )
 
