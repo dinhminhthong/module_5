@@ -1,5 +1,5 @@
-import {ErrorMessage, Form, Formik} from "formik";
-import {useEffect, useState} from "react";
+import {ErrorMessage, Form, Formik, Field} from "formik";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router";
 import * as Yup from "yup"
 import * as studentService from "../service/StudentService"
@@ -12,7 +12,7 @@ function StudentCreate() {
             const rs = await studentService.findAllClass()
             setClass2(rs)
         }
-        getClassList()
+        getClassList();
     }, [])
     return (
         <>
@@ -25,12 +25,41 @@ function StudentCreate() {
                         }
                     )}
                     onSubmit={(value) => {
-                        const create =async ()=>{
-                            await studentService.save
+                        const create = async () => {
+                            await studentService.save(value)
+                            alert('thêm mới thành công')
+                            navigate('/')
                         }
-                    }}>
+                        create();
+                    }}
+            >
+                <Form>
+                    <div className='col-3'>
+                        <div>
+                            <label htmlFor="name">Tên học sinh</label>
+                            <Field type="text"
+                                   className="form-control" name="name"
+                                   id="name" aria-describedby="helpId" placeholder=""
+                            />
+                        </div>
+                        <ErrorMessage component='span' className='text-bg-danger' name='name'/>
+                    </div>
 
+                    <div className='col-3'>
+                    <div>
+                        <label htmlFor="score">Tên học sinh</label>
+                        <Field type="text"
+                               className="form-control" name="score"
+                               id="score" aria-describedby="helpId" placeholder=""
+                        />
+                    </div>
+                    <ErrorMessage component='span' className='text-bg-danger' name='score'/>
+                </div>
+
+
+                </Form>
             </Formik>
         </>
     )
 }
+export default StudentCreate;

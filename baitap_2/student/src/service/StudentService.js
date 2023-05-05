@@ -1,4 +1,5 @@
 import axios from "axios";
+import {useAccordionButton} from "react-bootstrap";
 
 export const findAll = async ()=>{
   try {
@@ -17,5 +18,9 @@ export const findAllClass = async ()=>{
     }
 }
 export const save = async (student)=>{
-    await axios.post(`http://localhost:8000/student ${student}`)
+   try {
+       await axios.post(`http://localhost:8000/class`,{ ...student })
+   }catch (e) {
+       console.log(e)
+   }
 }
