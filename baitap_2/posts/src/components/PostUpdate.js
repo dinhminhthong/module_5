@@ -6,6 +6,12 @@ import React from "react";
 function PostCreate() {
     let navigate = useNavigate();
     let param = useParams();
+    const [post, setPost] = useState();
+    useEffect(() => {
+        const fetchApi = async () => {
+            const result = await postService.findById(param.id);
+            setPost(result);
+        };
     return(
         <>
             <Formik initialValues={{title:'',slug:'',category:'',content:'',updateAt:''}}
