@@ -1,29 +1,28 @@
-import {Formik, Form, ErrorMessage, Field} from "formik";
-import * as postService from "../service/PostServie"
+import {Formik, Form, Field, ErrorMessage} from "formik";
 import {useNavigate} from "react-router";
+import * as blogService from "../service/BlogService";
 import * as Yup from "yup"
-import React from "react";
-function PostCreate() {
-    let navigate = useNavigate()
-    return(
+
+function BlogCreate() {
+    let navigate = useNavigate();
+    return (
         <>
-            <Formik initialValues={{title:'',slug:'',category:'',content:'',updateAt:''}}
+            <Formik initialValues={{title: '', slug: '', category: '', thumbnailUrl: ''}}
                     validationSchema={Yup.object({
-                        title :Yup.string().required('không được để trống'),
-                        slug:Yup.string().required(('không được để trống')),
-                        category:Yup.string().required(('không được để trống')),
-                        content:Yup.string().required(('không được bỏ trống')),
-                        updateAt:Yup.string().required(('không được bỏ trống'))
+                        title: Yup.string().required(("không được để trống")),
+                        slug: Yup.string().required(("không được để trống")),
+                        category: Yup.string().required(("không được để trống")),
+                        thumbnailUrl: Yup.string().required(("không được bỏ trống"))
                     })}
                     onSubmit={(value) => {
                         const create = async () => {
-                            await postService.save(value)
-                            alert('thêm mới thành công')
+                            await blogService.save(value);
+                            alert("thêm mới  thành công")
                             navigate('/')
                         }
                         create();
                     }}
-                 >
+            >
                 <Form>
                     <div className='col-3'>
                         <div>
@@ -60,31 +59,23 @@ function PostCreate() {
 
                     <div className='col-3'>
                         <div>
-                            <label htmlFor="content">Content</label>
+                            <label htmlFor="thumbnailUrl">Thumbnail URL</label>
                             <Field type="text"
-                                   className="form-control" name="content"
-                                   id="content" aria-describedby="helpId" placeholder=""
+                                   className="form-control" name="thumbnailUrl"
+                                   id="thumbnailUrl" aria-describedby="helpId" placeholder=""
                             />
                         </div>
-                        <ErrorMessage component='span' className='text-bg-danger' name='content'/>
-                    </div>
-
-                    <div className='col-3'>
-                        <div>
-                            <label htmlFor="updateAt">Content</label>
-                            <Field type="text"
-                                   className="form-control" name="updateAt"
-                                   id="updateAt" aria-describedby="helpId" placeholder=""
-                            />
-                        </div>
-                        <ErrorMessage component='span' className='text-bg-danger' name='updateAt'/>
+                        <ErrorMessage component='span' className='text-bg-danger' name='thumbnailUrl'/>
                     </div>
                     <button className="btn btn-outline-secondary " type="submit">
                         Submit
                     </button>
+
                 </Form>
             </Formik>
-            </>
+        </>
     )
+
 }
-export default PostCreate;
+
+export default BlogCreate;
