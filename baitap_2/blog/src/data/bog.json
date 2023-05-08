@@ -1,0 +1,26 @@
+{
+  "blog": [
+    {
+      "id": 1,
+      "title": "blog về du lịch",
+      "content": "du lịch",
+      "typeBlog": 1
+    },
+    {
+      "id": 2,
+      "title": "blog về ẩm thực",
+      "content": "ẩm thực",
+      "typeBlog": 2
+    }
+  ],
+  "BlogType": [
+    {
+      "id": 1,
+      "type": "youtube"
+    },
+    {
+      "id": 2,
+      "type": "tiktok"
+    }
+  ]
+}

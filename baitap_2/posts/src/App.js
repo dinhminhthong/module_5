@@ -3,6 +3,7 @@ import {NavLink, Routes} from "react-router-dom"
 import {Route} from "react-router-dom";
 import PostList from "./components/PostList";
 import PostCreate from "./components/PostCreate";
+import PostEdit from "../../ss2/src/component/PostEdit";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <Routes>
         <Route path='/' element={<PostList/>}/>
         <Route path='/create' element={<PostCreate/>}/>
+        <Route path='/edit/:id' element={<PostEdit/>}/>
+
       </Routes>
     </div>
   );

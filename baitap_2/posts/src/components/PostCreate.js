@@ -4,7 +4,20 @@ import {useNavigate} from "react-router";
 import * as Yup from "yup"
 import React from "react";
 function PostCreate() {
-    let navigate = useNavigate()
+    let navigate = useNavigate();
+    let param =useParams()
+    const [post,setPost] = useState();
+    useEffect(() => {
+        const fetchApi = async () => {
+            const detail = await postsService.findById(param.id)
+            setPost(detail)
+        }
+        fetchApi()
+    }, [])
+    console.log(post)
+    if(!post){
+        return null
+    }
     return(
         <>
             <Formik initialValues={{title:'',slug:'',category:'',content:'',updateAt:''}}
@@ -22,7 +35,7 @@ function PostCreate() {
                             navigate('/')
                         }
                         create();
-                    }}
+                    },500}
                  >
                 <Form>
                     <div className='col-3'>
