@@ -35,7 +35,7 @@ function PostCreate() {
                             navigate('/')
                         }
                         create();
-                    },500}
+                    }}
                  >
                 <Form>
                     <div className='col-3'>

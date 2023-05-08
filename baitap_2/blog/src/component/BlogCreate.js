@@ -10,15 +10,16 @@ function BlogCreate() {
     useEffect(() => {
         const getTypeBLog = async () => {
             let result = await blogService.findAllType();
+            debugger
             setType(result)
         }
         getTypeBLog()
     }, [])
 
     return (
-        <>
+        type && <>
             <h1 className='text-center'>Blog Create</h1>
-            <Formik initialValues={{title: '', content: '', type: ''}}
+            <Formik initialValues={{title: '', content: '', typeBlog: 1}}
                     validationSchema={Yup.object({
                         title: Yup.string().required(("không được bỏ trống")),
                         content: Yup.string().required(("không được bỏ trống")),
@@ -59,24 +60,21 @@ function BlogCreate() {
 
                     <div className="col-3">
                         <div className='form-group'>
-                            <label htmlFor="type">Type</label>
-                            <Field >
-                                {
-                                    type.map((types) => (
-                                        <option key={types.id} value={types.id}>
-                                            {types.type}
-                                        </option>
-                                    ))
-                                }
+                            <label htmlFor=''>Type</label>
+                            <Field component='select' name='typeBlog' id='typeBlog'>
+                                {type.map((types,index) => (
+                                    <option key={index} value={types.id}>
+                                        {types.type}
+                                    </option>
+                                ))}
                             </Field>
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit
-                        </button>
+                        <button type="submit" className="btn btn-primary">Submit</button>
                     </div>
                 </Form>
             </Formik>
         </>
     )
 }
-
 export default BlogCreate;
+

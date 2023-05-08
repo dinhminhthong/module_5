@@ -11,6 +11,24 @@
       "title": "blog về ẩm thực",
       "content": "ẩm thực",
       "typeBlog": 2
+    },
+    {
+      "title": "gg",
+      "content": "gg",
+      "typeBlog": "2",
+      "id": 3
+    },
+    {
+      "title": "ê",
+      "content": "ê",
+      "typeBlog": 1,
+      "id": 4
+    },
+    {
+      "title": "bóng đá",
+      "content": "đá bóng",
+      "typeBlog": 1,
+      "id": 5
     }
   ],
   "BlogType": [

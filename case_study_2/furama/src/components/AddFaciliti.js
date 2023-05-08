@@ -1,147 +1,181 @@
-import React, {Component} from 'react';
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from 'yup'
 
-class AddFicility extends Component {
-    render() {
-        return (
-            <div>
-                <div className="modal " tabIndex="-1" id="addmodal">
-                    <div className="modal-dialog modal-xl">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">
-                                    Thêm mới dịch vụ{' '}
-                                    <i className="fa fa-user" aria-hidden="true"></i>
-                                </h5>
-                                <button
-                                    type="button"
-                                    className="btn-close clearError"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                                ></button>
-                            </div>
-                            <div className="modal-body">
-                                <form method="post">
-                                    <input type="hidden" name="validate" value="add"/>
-                                    <div className="mb-3 row">
-                                        <label className="col-sm-2 col-form-label">
-                                            Loại Dịch Vụ
-                                        </label>
-                                        <div className="col-sm-10">
-                                            <select
-                                                className="form-control"
-                                                onChange={() => this.facility()}
-                                                id="selectValue"
-                                            >
-                                                <option className="form-control" value="1">
-                                                    Villa
-                                                </option>
-                                                <option className="form-control" value="2">
-                                                    House
-                                                </option>
-                                                <option className="form-control" value="3">
-                                                    Room
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div className="mb-3 row">
-                                        <label className="col-sm-2 col-form-label">
-                                            Tên Dịch Vụ
-                                        </label>
-                                        <div className="col-sm-10">
-                                            <input type="text" className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="mb-3 row">
-                                        <label className="col-sm-2 col-form-label">
-                                            Diện Tích
-                                        </label>
-                                        <div className="col-sm-10">
-                                            <input type="number" className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="mb-3 row">
-                                        <label className="col-sm-2 col-form-label">
-                                            Chi Phí Thuê
-                                        </label>
-                                        <div className="col-sm-10">
-                                            <input type="number" className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="mb-3 row">
-                                        <label className="col-sm-2 col-form-label">
-                                            Số Người Tối Đa
-                                        </label>
-                                        <div className="col-sm-10">
-                                            <input type="number" className="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div className="mb-3 row">
-                                        <label className="col-sm-2 col-form-label">Kiểu Thuê</label>
-                                        <div className="col-sm-10">
-                                            <select className="form-control">
-                                                <option className="form-control" value="1">
-                                                    Year
-                                                </option>
-                                                <option className="form-control" value="2">
-                                                    Month
-                                                </option>
-                                                <option className="form-control" value="3">
-                                                    Day
-                                                </option>
-                                                <option className="form-control" value="4">
-                                                    Hour
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
+function FacilityAdd()  {
 
-                                    <div className="mb-3 row" id="standardAdd">
-                                        <label className="col-sm-2 col-form-label">
-                                            Tiêu Chuẩn Phòng
-                                        </label>
-                                        <div className="col-sm-10">
-                                            <input type="text" className="form-control"/>
+    const REQUIRED_VALIDATION = 'Không được để trống'
+
+    return (
+        <>
+
+            <Formik initialValues={{
+                name: '',
+                area: '',
+                cost: '',
+                maxPepple: '',
+                facilityType: {},
+                rentType: {},
+                standardRoom: '',
+                descriptionOtherCovenience: '',
+                poolArea: '',
+                numberOfFloors: '',
+                facilityFree: '',
+                status: ''
+            }}
+                    validationSchema={Yup.object({
+                        name: Yup.string().required(REQUIRED_VALIDATION),
+                        area: Yup.number().required(REQUIRED_VALIDATION),
+                        cost: Yup.number().required(REQUIRED_VALIDATION),
+                        maxPepple: Yup.number().required(REQUIRED_VALIDATION),
+                        standardRoom: Yup.string().required(REQUIRED_VALIDATION),
+                        descriptionOtherCovenience: Yup.string().required(REQUIRED_VALIDATION),
+                        poolArea: Yup.number().required(REQUIRED_VALIDATION),
+                        numberOfFloors: Yup.string().required(REQUIRED_VALIDATION),
+                        facilityFree: Yup.string().required(REQUIRED_VALIDATION)
+
+                    })}
+
+
+            >
+                <Form>
+                    <div>
+                        <section id="input-mask-wrapper">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <div className="card">
+                                        <div className="card-header">
+                                            <strong id="inDam"><h1 className="card-title" style={{ color: 'red' }}>Add Service</h1></strong>
                                         </div>
-                                        <div className="mb-3 row" id="descriptionAdd">
-                                            <label className="col-sm-2 col-form-label">Mô Tả Khác</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className="form-control"/>
+                                        <div className="card-body">
+                                            <div className="row col-md-12 col-xl-12 col-sm-12" >
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" htmlFor="basicSelect">Facility Type </label>
+                                                    <select className="form-select" id="basicSelect" >
+                                                        <option>IT</option>
+                                                        <option>Blade Runner</option>
+                                                        <option>Thor Ragnarok</option>
+                                                    </select>
+
+                                                </div>
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" >Name Facility:</label>
+                                                    <Field name='name' type="text" className="form-control phone-number-mask" placeholder="Input Name" />
+                                                    <div>
+                                                        <ErrorMessage name='name' component='span' className='form-err' />
+                                                    </div>
+
+
+                                                </div>
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" htmlFor="area">Area</label>
+                                                    <Field name='area' type="number" className="form-control date-mask" placeholder="1000 mét vuông" id="area"
+                                                    />
+                                                    <div>
+                                                        <ErrorMessage name='area' component='span' className='form-err' />
+                                                    </div>
+
+                                                </div>
+
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" >Cost</label>
+                                                    <Field name='cost' type="number" className="form-control time-mask" placeholder="?" id='cost' />
+                                                    <div>
+                                                        <ErrorMessage name='cost' component='span' className='form-err' />
+                                                    </div>
+
+
+                                                </div>
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" htmlFor="numeral-formatting">Max People</label>
+                                                    <Field name='maxPepple' type="number" className="form-control numeral-mask" placeholder="input number people" id="numeral-formatting" />
+                                                    <div>
+                                                        <ErrorMessage name='maxPepple' component='span' className='form-err' />
+                                                    </div>
+
+                                                </div>
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" htmlFor="standardRoom">Standard Room</label>
+                                                    <Field name='standardRoom' type="text" className="form-control block-mask" placeholder="loại phòng" id="standardRoom" />
+                                                    <div>
+                                                        <ErrorMessage name='standardRoom' component='span' className='form-err' />
+                                                    </div>
+
+                                                </div>
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" >Description Other Convenience</label>
+                                                    <div className="input-group input-group-merge">
+                                                        <Field name='descriptionOtherCovenience' type="text" className="form-control delimiter-mask" />
+                                                    </div>
+                                                    <div>
+                                                        <ErrorMessage name='descriptionOtherCovenience' component='span' className='form-err' />
+                                                    </div>
+
+
+                                                </div>
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" >poolArea</label>
+                                                    <Field name='poolArea' type="number" className="form-control custom-delimiter-mask" placeholder="poolArea"
+                                                    />
+                                                    <div>
+                                                        <ErrorMessage name='poolArea' component='span' className='form-err' />
+                                                    </div>
+                                                </div>
+
+
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" >numberFloors</label>
+                                                    <div className="input-group input-group-merge">
+                                                        <Field name='numberOfFloors' type="text" className="form-control prefix-mask"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <ErrorMessage name='numberOfFloors' component='span' className='form-err' />
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" htmlFor="facilityFree">facilityFree</label>
+                                                    <Field name='facilityFree' type="text" className="form-control prefix-mask" id="facilityFree" />
+
+                                                    <div>
+                                                        <ErrorMessage name='facilityFree' component='span' className='form-err' />
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div className="col-xl-4 col-md-6 col-sm-12 mb-2">
+                                                    <label className="form-label" htmlFor="rentType">Rent Type</label>
+                                                    <select className="form-select" id="rentType" >
+                                                        <option>IT</option>
+                                                        <option>Blade Runner</option>
+                                                        <option>Thor Ragnarok</option>
+                                                    </select>
+
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="mb-3 row" id="poolAreaAdd">
-                                            <label className="col-sm-2 col-form-label">Diện Tích Hồ Bơi</label>
-                                            <div className="col-sm-10">
-                                                <input type="number" className="form-control"/>
+                                            <div className="col-12">
+                                                <button type="submit" className="btn btn-primary me-1 waves-effect waves-float waves-light">Submit</button>
+                                                <button type="reset" className="btn btn-outline-secondary waves-effect">Reset</button>
                                             </div>
-                                        </div>
-                                        <div className="mb-3 row" id="numberOfFloorAdd">
-                                            <label className="col-sm-2 col-form-label">Số Tầng</label>
-                                            <div className="col-sm-10">
-                                                <input type="number" className="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div className="mb-3 row d-none" id="addFreeService">
-                                            <label className="col-sm-2 col-form-label">Dịch Vụ Miễn Phí</label>
-                                            <div className="col-sm-10">
-                                                <input type="text" className="form-control"/>
-                                            </div>
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary clearError"
-                                                    data-bs-dismiss="modal">Hủy
-                                            </button>
-                                            <button type="submit" className="btn btn-primary">Xác Nhận</button>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
+
                             </div>
-                        </div>
+                        </section>
+
+
                     </div>
-                </div>
-            </div>
-        );
-    }
-}
+                </Form>
 
-export default AddFicility;
+            </Formik>
+
+
+        </>
+
+    )
+}
+export default FacilityAdd;
