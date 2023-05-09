@@ -1,10 +1,92 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true
-  },
-  "exclude": [
-    "node_modules"
+  "products": [
+    {
+      "id": 1,
+      "name": "laptop gaming",
+      "date": "14-02-2001",
+      "productType": 1
+    },
+    {
+      "id": 2,
+      "name": "macbook",
+      "date": "24-12-2001",
+      "productType": 2
+    },
+    {
+      "name": "we",
+      "date": "e",
+      "productType": 1,
+      "id": 3
+    },
+    {
+      "name": "i",
+      "date": "4/12",
+      "productType": "2",
+      "id": 4
+    },
+    {
+      "name": "2",
+      "date": "3",
+      "productType": 1,
+      "id": 5
+    }
+  ],
+  "typeProduct": [
+    {
+      "id": 1,
+      "type": "laptop choi game"
+    },
+    {
+      "id": 2,
+      "type": "laptop van phong"
+    },
+    {
+      "name": "32",
+      "date": "4/12/2004",
+      "productType": "2",
+      "id": 3
+    },
+    {
+      "name": "e",
+      "date": "4/12/2004",
+      "productType": 1,
+      "id": 4
+    },
+    {
+      "name": "samsung",
+      "date": "4/12/2004",
+      "productType": 1,
+      "id": 5
+    },
+    {
+      "name": "4",
+      "date": "4/12/2004",
+      "productType": "2",
+      "id": 6
+    },
+    {
+      "name": "2",
+      "date": "3",
+      "productType": 1,
+      "id": 7
+    },
+    {
+      "name": "samsung",
+      "date": "34",
+      "productType": "2",
+      "id": 8
+    },
+    {
+      "name": "samsung",
+      "date": "4/12/2004",
+      "productType": 1,
+      "id": 9
+    },
+    {
+      "name": "samsung",
+      "date": "4/12/2004",
+      "productType": 1,
+      "id": 10
+    }
   ]
 }

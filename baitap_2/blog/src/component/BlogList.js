@@ -38,10 +38,9 @@ function BlogList() {
                             <td>{value.title}</td>
                             <td>{value.content}</td>
                             <td>{
-                                type.filter(bl => bl.id === value.typeBlog)[0]?.type
+                                type.filter(bl => bl.id == value.typeBlog)[0]?.type
                             }
                             </td>
-
                         </tr>
                     ))
                 }

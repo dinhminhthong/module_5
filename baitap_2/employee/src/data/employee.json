@@ -1,0 +1,32 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "dinh minh thong",
+      "level": "intern",
+      "typeEmployee": 1
+    },
+    {
+      "id": 2,
+      "name": "le hoang dung",
+      "level": "fresher",
+      "typeEmployee": 2
+    },
+    {
+      "name": "e",
+      "level": "e",
+      "typeEmployee": "2",
+      "id": 3
+    }
+  ],
+  "employeeTypes": [
+    {
+      "id": 1,
+      "type": "nhân viên đang phát triển"
+    },
+    {
+      "id": 2,
+      "type": "nhân viên đã vô hợp đồng"
+    }
+  ]
+}

@@ -3,14 +3,14 @@ import * as postService from "../service/PostServie";
 import ModalDelete from "../../../ss2/src/component/ModalDelete";
 
 function PostList() {
-    const [post, setPost] = useState([])
+    const [postList, setPostList] = useState([])
     const [deleteId, setDeleteId] = useState(0)
     const [deleteName, setDeleteName] = useState("")
     useEffect(() => {
         const getAll = async () => {
             let result = await postService.findAll();
-            setPost(result)
-            return post;
+            setPostList(result)
+            return postList;
         }
         getAll();
     }, []);
@@ -39,7 +39,7 @@ function PostList() {
                 </thead>
                 <tbody>
                 {
-                    post.map((value, index) => (
+                    postList.map((value, index) => (
                         <tr key={index}>
                             <td>{index}</td>
                             <td className='col-3'>{value.title}</td>
@@ -64,12 +64,12 @@ function PostList() {
                 getList={
                     () => {
                         console.log('getList')
-                        const abc = async () => {
-                            const rs = await post.finAll('')
-                            console.log(rs);
-                            setPost(rs)
+                        const result = async () => {
+                            const rs = await postList.findAll('')
+
+                            setPostList(rs)
                         }
-                        abc()
+                        result()
                     }
                 }
             />
