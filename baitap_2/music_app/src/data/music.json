@@ -1,0 +1,36 @@
+{
+  "musics": [
+    {
+      "id": 2,
+      "name": "nối vòng tay lớn",
+      "author": "trịnh công sơn",
+      "musicType": 2
+    },
+    {
+      "id": 3,
+      "name": "xuân này con không về",
+      "author": "báo thủ",
+      "musicType": 3
+    },
+    {
+      "name": "phía sau cô gái",
+      "author": "sô bin hòn sơn",
+      "musicType": "3",
+      "id": 4
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "nhạc trẻ"
+    },
+    {
+      "id": 2,
+      "type": "nhạc tiền chiến"
+    },
+    {
+      "id": 3,
+      "type": "nhạc của loài báo"
+    }
+  ]
+}

@@ -1,25 +1,32 @@
 import axios from "axios";
 
-export const findAll = async () => {
+export  const findAll = async ()=>{
     try {
-        let result = await axios.get(`http://localhost:8000/employees`)
+        let result = await axios.get(`http://localhost:8080/employees`)
         return result.data
-    } catch (e) {
+    }catch (e) {
         console.log(e)
     }
 }
-export const findAllType = async () => {
+export const findAllLevel = async ()=>{
     try {
-        let result = await axios.get(`http://localhost:8000/employeeTypes`)
+        let result = await axios.get(`http://localhost:8080/levels`)
         return result.data
-    } catch (e) {
+    }catch (e) {
         console.log(e)
     }
 }
-export const save = async (employee) => {
+export const save = async (employee)=>{
     try {
-        await axios.post(`http://localhost:8000/employees`, {...employee })
-    } catch (e) {
+        await axios.post(`http://localhost:8080/employees`,{ ...employee })
+    }catch (e) {
+        console.log(e)
+    }
+}
+export const remove = async (id)=>{
+    try {
+        await axios.delete(`http://localhost:8080/employees/${id}`)
+    }catch (e) {
         console.log(e)
     }
 }

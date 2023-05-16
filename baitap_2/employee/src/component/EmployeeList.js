@@ -1,50 +1,59 @@
 import {useEffect, useState} from "react";
-import * as employeeService from "../service/EmployeeService";
+import * as employeeService from "../service/EmployeeService"
 
 function EmployeeList() {
-    const [employee, setEmployee] = useState([])
-    const [types, setTypes] = useState([])
+    const [employees, setEmployees] = useState([])
+    const [levels, setLevels] = useState([])
     useEffect(() => {
         const getAll = async () => {
-            let rs = await employeeService.findAll();
-            setEmployee(rs)
+            let result = await employeeService.findAll();
+            setEmployees(result)
         }
-        const getAllType = async () => {
-            let rs = await employeeService.findAllType();
-            setTypes(rs)
+        const getAllLevel = async () => {
+            let result = await employeeService.findAllLevel();
+            setLevels(result)
         }
         getAll();
-        getAllType();
+        getAllLevel();
     }, [])
+    const handleDelete = async (id)=>{
+        await employeeService.remove(id);
+        let rs = await employeeService.findAll()
+        setEmployees(rs)
+    }
     return (
         <>
-            <h1 className="text-center">List Employee</h1>
-            <table className="table table-striped">
+            <h1 className='text-center'>List Employee</h1>
+            <table className="table table-stripe">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>NAME</th>
+                    <th>CONTRACT</th>
                     <th>LEVEL</th>
-                    <th>TYPE EMPLOYEE</th>
+                    <th><ACTION></ACTION></th>
                 </tr>
                 </thead>
                 <tbody>
                 {
-                    employee.map((value, index) => (
+                    employees.map( (value,index)=>(
                         <tr key={index}>
                             <td>{index}</td>
                             <td>{value.name}</td>
-                            <td>{value.level}</td>
+                            <td>{value.contract}</td>
                             <td>
                                 {
-                                    types.filter(ems => ems.id == value.typeEmployee)[0]?.type
+                                    levels.filter(ems=>ems.id == value.levelEmployee)[0]?.level
                                 }
                             </td>
+                            <td>
+                                <a className='btn btn-danger' onClick={()=>handleDelete(value.id)}>DELETE</a>
+                            </td>
+
                         </tr>
                     ))
                 }
                 </tbody>
-
             </table>
         </>
     )

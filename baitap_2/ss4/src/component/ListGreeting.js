@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Greeting() {
+function Greeting(Props) {
     const [firstName, setFirstName] = useState(
         window.localStorage.getItem("classFirstName") || ""
     );

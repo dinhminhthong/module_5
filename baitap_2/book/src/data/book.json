@@ -1,0 +1,17 @@
+{
+  "books": [],
+  "types": [
+    {
+      "id": 1,
+      "type": "tuổi thơ"
+    },
+    {
+      "id": 2,
+      "type": "trinh thám"
+    },
+    {
+      "id": 3,
+      "type": "khoa học vũ trụ"
+    }
+  ]
+}

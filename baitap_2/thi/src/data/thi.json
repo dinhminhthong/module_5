@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "váy hoa",
+      "date": "14/2/2001",
+      "soLuong": 10,
+      "typeProduct": 1
+    },
+    {
+      "id": 2,
+      "name": "áo sơ mi trắng",
+      "date": "24/4/2001",
+      "soLuong": 20,
+      "typeProduct": 2
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "đồng phục nữ"
+    },
+    {
+      "id": 2,
+      "type": "đồng phục nam"
+    }
+  ]
+}

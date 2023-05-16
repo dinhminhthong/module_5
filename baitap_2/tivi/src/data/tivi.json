@@ -1,0 +1,13 @@
+{
+  "tivis": [],
+  "types": [
+    {
+      "id": 1,
+      "type": "samsung"
+    },
+    {
+      "id": 2,
+      "type": "LG"
+    }
+  ]
+}

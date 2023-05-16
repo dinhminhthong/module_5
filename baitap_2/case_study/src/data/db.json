@@ -96,13 +96,18 @@
       "facitilyMaxPeople": "5",
       "facilityRentalType": "Ngày",
       "facilityTypeId": "2",
+      "villaStandard": "",
+      "villaOtherAminities": "",
+      "villaPoolArea": "",
+      "villaNumbOfFloor": "",
       "houseStandard": "vip",
       "houseOtherAminities": "Thuê xe máy / xe đạp",
       "houseNumbOfFloor": "3",
       "roomFreeAminities": "",
       "facilityAminitiesid": [
         "2",
-        "3"
+        "3",
+        "4"
       ],
       "facility": "facility"
     },
