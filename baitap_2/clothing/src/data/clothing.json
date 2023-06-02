@@ -1,0 +1,26 @@
+{
+  "clothings": [
+    {
+      "id": 1,
+      "name": "áo dài",
+      "date": "14/02/2001",
+      "typeClothing": 1
+    },
+    {
+      "id": 2,
+      "name": "áo thun",
+      "date": "14/04/2001",
+      "typeClothing": 2
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "trang phục truyền thống"
+    },
+    {
+      "id": 2,
+      "type": "trang phục dân dã"
+    }
+  ]
+}

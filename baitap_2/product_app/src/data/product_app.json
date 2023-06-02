@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "quần đùi áo số",
+      "date": "14/02/2001",
+      "quantity": 100,
+      "typeProduct": 1
+    },
+    {
+      "id": 2,
+      "name": "áo dài",
+      "date": "24/04/2001",
+      "quantity": 200,
+      "typeProduct": 2
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "name": "đồng phục nam"
+    },
+    {
+      "id": 2,
+      "name": "đồng phục nữ"
+    }
+  ]
+}
