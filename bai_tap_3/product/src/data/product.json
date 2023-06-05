@@ -1,0 +1,26 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "43",
+      "color": "màu nho33123",
+      "typeProduct": "1"
+    },
+    {
+      "id": 2,
+      "name": "macbook pro 2023",
+      "color": "màu bạc",
+      "typeProduct": "1"
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "laptop văn phòng"
+    },
+    {
+      "id": 2,
+      "type": "laptop gaming"
+    }
+  ]
+}
