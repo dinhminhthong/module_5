@@ -62,8 +62,12 @@
     let result2 = courses.filter(value => value.rating < 4).map(courses => courses.id + "-" + courses.title + "-" + courses.rating)
     console.log(result2)
     // Yêu cầu 3: Sử dụng cú pháp ES6 đã học viết hàm trả về một mảng mới gộp 2 mảng courses và addedCourses
-    let newArr = [...courses, ...addedCourses]
-    console.log(newArr)
+    // let newArr = [...courses, ...addedCourses]
+    // console.log(newArr)
+    const newArr = (courses,addedCourses)=>{
+        return [...courses, ...addedCourses];
+    }
+    console.log(newArr())
 </script>
 </body>
 
