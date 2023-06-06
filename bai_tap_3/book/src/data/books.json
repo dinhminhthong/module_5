@@ -1,0 +1,32 @@
+{
+  "books": [
+    {
+      "id": 2,
+      "name": "cho em",
+      "authur": "đen vâu",
+      "typeBook": "1"
+    },
+    {
+      "id": 3,
+      "name": "hẹn một mai",
+      "authur": "bùi anh tuấn",
+      "typeBook": "2"
+    },
+    {
+      "name": "chuyện đôi ta",
+      "authur": "dad lad",
+      "typeBook": "2",
+      "id": 4
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "thiếu nhi"
+    },
+    {
+      "id": 2,
+      "type": "trinh thám"
+    }
+  ]
+}
