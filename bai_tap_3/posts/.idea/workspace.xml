@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3262374-e9ae-4fca-8797-bc56adb5f79d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../book/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../book/.idea/book.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../book/src/component/BookCreate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../book/src/data/books.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../book/src/service/BookService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/.idea/customer.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/componet/CustomerList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../customer/src/service/CustomerService.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../employee/src/component/EmployeeCreate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../employee/src/component/EmployeeEidt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../hooks/.idea/hooks.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee/src/component/EmployeeList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/src/component/EmployeeList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee/src/data/employee.json" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/src/data/employee.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../employee/src/service/EmployeeService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../employee/src/service/EmployeeService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../baitap_2/case_study/src/component/customer/CustomerAddForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap_2/case_study/src/component/customer/CustomerAddForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../baitap_2/case_study/src/component/customer/CustomerEditForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap_2/case_study/src/component/customer/CustomerEditForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../baitap_2/case_study/src/data/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap_2/case_study/src/data/db.json" afterDir="false" />
@@ -37,8 +42,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -51,10 +59,17 @@
       <option name="presentableId" value="Default" />
       <updated>1686025817608</updated>
       <workItem from="1686025818807" duration="27000" />
+      <workItem from="1686126555494" duration="15000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="642" y="325" key="#ESLint" timestamp="1686126569932">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="642" y="325" key="#ESLint/0.0.1536.824@0.0.1536.824" timestamp="1686126569932" />
   </component>
 </project>

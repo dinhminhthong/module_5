@@ -25,14 +25,13 @@ function PostsEdit() {
                 category:postUpdate?.category,
                 time:postUpdate?.time
             }}
-                    onSubmit={(values)=>{
+                    onSubmit={async (values)=>{
                       try {
-                          // console.log(values)
-                          postsService.update(values)
+                          await postsService.update(values)
                           alert("update thanh cong")
                           navigate("/")
                       }catch (e) {
-
+                            console.log(e)
                       }
                     }}>
                 <Form>
