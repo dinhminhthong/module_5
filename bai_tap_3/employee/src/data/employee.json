@@ -1,25 +1,12 @@
 {
-  "employees": [
-    {
-      "id": 1,
-      "name": "huỳnh thị ngọc huyền",
-      "level": "diamon",
-      "typeEmployee": 1
-    },
-    {
-      "id": 2,
-      "name": "đinh minh thông",
-      "level": "gold",
-      "typeEmployee": 2
-    }
-  ],
+  "employees": [],
   "types": [
     {
-      "id":1,
+      "id": 1,
       "type": "nhân viên lâu năm"
     },
     {
-      "id":2,
+      "id": 2,
       "type": "nhân viên thực tập"
     }
   ]

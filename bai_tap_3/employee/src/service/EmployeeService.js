@@ -24,3 +24,31 @@ export const findByName = async (name)=>{
         console.log(e)
     }
 }
+export const save = async (employee)=>{
+    try {
+        await axios.post(`http://localhost:8000/employees`,{ ...employee })
+    }catch (e) {
+        console.log(e)
+    }
+}
+export const remove = async (id)=>{
+    try {
+        await axios.delete(`http://localhost:8000/employees/${id}`)
+    }catch (e) {
+        console.log(e)
+    }
+}
+export const findById = async (id)=>{
+    try {
+        return (await axios.get(`http://localhost:8000/employees/${id}`)).data
+    }catch (e) {
+        console.log(e)
+    }
+}
+export const update = async (employee)=>{
+    try {
+        await axios.put(`http://localhost:8000/employees/${employee.id}`,{ ...employee })
+    }catch (e) {
+         console.log(e)
+    }
+}

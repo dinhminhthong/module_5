@@ -1,6 +1,7 @@
 import * as employeeService from '../service/EmployeeService';
 import {Formik, Form, Field} from "formik";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import {Link, NavLink} from "react-router-dom";
 
 function EmployeeList() {
     const [employees, setEmployees] = useState([])
@@ -16,9 +17,15 @@ function EmployeeList() {
         }
         getAll()
         getAllType()
-    }, [])
+    }, []);
+    const handleDelete = async (id)=>{
+        await employeeService.remove(id)
+        let rs = await employeeService.findAll();
+        setEmployees(rs)
+    }
     return (
         <>
+            <NavLink to='/create' className='btn btn-primary'>Create</NavLink>
             <Formik initialValues={{name: ''}}
                     onSubmit={(values) => {
                         const search = async () => {
@@ -53,6 +60,12 @@ function EmployeeList() {
                                 {
                                     types.filter(ems=>ems.id == value.typeEmployee)[0]?.type
                                 }
+                            </td>
+                            <td>
+                                <button className='btn btn-danger' onClick={()=>handleDelete(value.id)}>Delete</button>
+                            </td>
+                            <td>
+                                <Link to={`edit/${value.id}`} className='btn btn-primary'>Update</Link>
                             </td>
                         </tr>
                     ))

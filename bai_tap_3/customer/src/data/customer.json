@@ -1,0 +1,30 @@
+{
+"customers": [
+  {
+    "id": 1,
+    "name": "huỳnh  thị ngọc huyền",
+    "date": "22/12/2001",
+    "typeCustomer": 1
+  },
+  {
+    "id": 2,
+    "name": "đinh minh thông",
+    "date": "14/02/2001",
+    "typeCustomer": 2
+  }
+],
+  "types": [
+    {
+      "id": 1,
+      "type": "gold"
+    },
+    {
+      "id": 2,
+      "type": "platinum"
+    },
+    {
+      "id": 3,
+      "type": "diamond"
+    }
+  ]
+}
