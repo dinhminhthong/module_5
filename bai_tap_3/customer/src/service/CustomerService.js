@@ -16,3 +16,11 @@ export const findAllType = async () => {
         console.log(e)
     }
 }
+export const findByName = async (name)=>{
+    try {
+        let rs = await axios.get(`http://localhost:8000/customers?name_like=${name}`)
+        return rs.data
+    }catch (e) {
+        console.log(e)
+    }
+}

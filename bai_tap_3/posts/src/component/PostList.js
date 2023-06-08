@@ -30,9 +30,10 @@ function PostList() {
                     }}
                     >
                 <Form className="col-4">
-                    <Field name="title" id="title"
-                    placeholder="Search...">
-                    </Field>
+                    <Field name="title"
+                           id="title"
+                    placeholder="Search..."/>
+
                     <button className='btn btn-primary' type="submit">Search</button>
                 </Form>
             </Formik>

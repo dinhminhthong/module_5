@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const findAll = async ()=>{
     try {
-        let result = await axios.get(`http://localhost:8000/books`)
+        let result = await axios.get(`http://localhost:8000/books?sort=name_&order=desc`)
         return result.data
     }catch (e) {
         console.log(e)
