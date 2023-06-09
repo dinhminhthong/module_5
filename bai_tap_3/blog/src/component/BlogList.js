@@ -67,6 +67,7 @@ function BlogList() {
                                         data-bs-target="#exampleModal" onClick={() => handleDelete(value.id)}>
                                 Delete
                             </button></td>
+                            <td><Link to={`/detail/${value.id}`} className='btn btn-primary'>Detail</Link></td>
                         </tr>
                     ))
                 }
