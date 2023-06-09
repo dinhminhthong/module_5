@@ -25,11 +25,7 @@ function App() {
           <Route path="/facility" element={<FacilitiesList />} />
           <Route path="/facility-edit/:id" element={<FacilitiesEditForm />} />
           <Route path="/facility-add" element={<FacilitiesAddForm />} />
-          <Route path="/customer" element={<CustomerList />} />
-          <Route path="/customer-edit/:id" element={<CustomerEditForm />} />
-          <Route path="/customer-add" element={<CustomerAddForm />} />
-          <Route path="/contract" element={<ContractList />} />
-          <Route path="/contract-add" element={<ContractAddForm />} />
+         
         </Routes>
         <Footer />
         <ToastContainer />
