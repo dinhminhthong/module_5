@@ -1,4 +1,4 @@
-import contractService from "../../service/contract/contractService";
+import contractService from "../../service/facility/contractService";
 import customerService from "../../service/customer/customerService";
 import facilityService from "../../service/facility/facilityService";
 import { useState, useEffect } from "react";
