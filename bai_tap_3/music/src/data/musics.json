@@ -1,0 +1,42 @@
+{
+  "music": [
+    {
+      "id": 1,
+      "name": "chúng ta của hiện tại",
+      "author": "sơn tùng mt-p",
+      "typeMusic": 1
+    },
+    {
+      "id": 2,
+      "name": "crying over you",
+      "author": "justatee",
+      "typeMusic": 2
+    },
+    {
+      "id": 3,
+      "name": "người đàn bà hóa đá",
+      "author": "bức tường",
+      "typeMusic": 3
+    },
+    {
+      "id": 4,
+      "name": "sài gòn VietName Gang",
+      "author": "thai vg",
+      "typeMusic": "2"
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "nhạc trẻ"
+    },
+    {
+      "id": 2,
+      "type": "nhạc rap"
+    },
+    {
+      "id": 3,
+      "type": "nhạc rock"
+    }
+  ]
+}

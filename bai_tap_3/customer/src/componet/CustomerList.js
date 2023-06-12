@@ -1,6 +1,7 @@
 import * as customerService from '../service/CustomerService'
 import React, {useEffect, useState} from "react";
 import {Formik,Form,Field} from "formik";
+import {Link, NavLink} from "react-router-dom";
 
 function CustomerList() {
     const [customers, setCustomers] = useState([])
@@ -21,6 +22,9 @@ function CustomerList() {
     },[])
     return (
         <>
+            <NavLink to='/create' className='btn btn-primary'>Create</NavLink>
+            <br/>
+            <br/>
            <Formik initialValues={{name:''}}
                    onSubmit={(values)=>{
                        const searchByName = async ()=>{
@@ -29,19 +33,13 @@ function CustomerList() {
                        }
                        searchByName()
                    }} >
-               {/*<Form>*/}
-               {/*    <Field name='name'*/}
-               {/*           id='name'*/}
-               {/*           placeholder='search'/>*/}
-               {/*           <button type='submit' className='btn btn-primary'>Search</button>*/}
-               {/*</Form>*/}
                <Form>
                    <label htmlFor="">Tìm kiếm</label>
                    <Field type="input" name="name"/>
                    <button type="submit" className="btn btn-primary btn-sm">Tìm kiếm</button>
                </Form>
            </Formik>
-            <h1 className='text-bg-light'>CustomerList</h1>
+            <h1 className='text-center'>CustomerList</h1>
             <table className='table table-striped'>
                 <thead className='table-danger'>
                 <tr>
@@ -49,6 +47,7 @@ function CustomerList() {
                     <th>Name</th>
                     <th>Date</th>
                     <th>Type Customer</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -62,6 +61,9 @@ function CustomerList() {
                                 {
                                     types.filter(cus=>cus.id == value.typeCustomer)[0]?.type
                                 }
+                            </td>
+                            <td>
+                                <Link to={`edit/${value.id}`} className='btn btn-primary'>Edit</Link>
                             </td>
                         </tr>
                     ))

@@ -1,18 +1,30 @@
 {
-"customers": [
-  {
-    "id": 1,
-    "name": "huỳnh  thị ngọc huyền",
-    "date": "22/12/2001",
-    "typeCustomer": 1
-  },
-  {
-    "id": 2,
-    "name": "đinh minh thông",
-    "date": "14/02/2001",
-    "typeCustomer": 2
-  }
-],
+  "customers": [
+    {
+      "id": 1,
+      "name": "huỳnh  thị ngọc huyền",
+      "date": "2001-12-22",
+      "typeCustomer": "3"
+    },
+    {
+      "id": 2,
+      "name": "đinh minh thông",
+      "date": "14/02/2001",
+      "typeCustomer": 2
+    },
+    {
+      "id": 3,
+      "name": "tiến",
+      "date": "2444-02-12",
+      "typeCustomer": "2"
+    },
+    {
+      "id": 4,
+      "name": "ewe223w",
+      "date": "0223-02-02",
+      "typeCustomer": "2"
+    }
+  ],
   "types": [
     {
       "id": 1,
