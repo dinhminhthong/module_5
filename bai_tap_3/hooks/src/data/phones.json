@@ -1,0 +1,56 @@
+{
+  "phones": [
+    {
+      "id": 1,
+      "name": "iphone 14",
+      "color": "white",
+      "quantity": 100,
+      "typePhone": 1
+    },
+    {
+      "id": 2,
+      "name": "samsung galaxy s ultra",
+      "color": "purple",
+      "quantity": 200,
+      "typePhone": 2
+    },
+    {
+      "name": "iphone 7 plus ",
+      "color": "black",
+      "quantity": "10000",
+      "typePhone": "2",
+      "id": 3
+    },
+    {
+      "name": "23",
+      "color": "23",
+      "quantity": 232,
+      "typePhone": 1,
+      "id": 4
+    },
+    {
+      "name": "2324",
+      "color": "234234",
+      "quantity": 33333333333,
+      "typePhone": "2",
+      "id": 5
+    },
+    {
+      "name": "33434",
+      "color": "3434",
+      "quantity": 4343,
+      "typePhone": 1,
+      "id": 6
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "apple"
+    },
+    {
+      "id": 2,
+      "type": "samsung"
+    }
+  ]
+}

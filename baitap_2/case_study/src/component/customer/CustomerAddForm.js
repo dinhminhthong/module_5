@@ -61,9 +61,6 @@ function CustomerAddForm() {
         })}
         onSubmit={(values, { setSubmitting }) => {
           try {
-            // if (typeof values.gender === "string") {
-            //   values.gender = parseInt(values.gender);
-            // }
             customerService.save(values);
             setSubmitting(false);
             toast("Thêm mới thành công");

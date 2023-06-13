@@ -1,18 +1,11 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "quần đùi áo số",
-      "date": "14/02/2001",
-      "quantity": 100,
-      "typeProduct": 1
-    },
-    {
-      "id": 2,
-      "name": "áo dài",
-      "date": "24/04/2001",
-      "quantity": 200,
-      "typeProduct": 2
+      "name": "samsung",
+      "date": "2001-02-14",
+      "quantity": "23",
+      "typeProduct": "2",
+      "id": 1
     }
   ],
   "types": [

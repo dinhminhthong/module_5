@@ -33,7 +33,7 @@ function ProductList() {
                 <tr>
                     <th>Mã sản phẩm</th>
                     <th>Tên sản phẩm</th>
-                    <th>Ngày nhập</th>
+                    <th>Ngày nhập</th> 
                     <th>Số lượng</th>
                     <th>Loại sản phẩm</th>
                     <th>Tính năng</th>

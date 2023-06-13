@@ -2,15 +2,51 @@
   "products": [
     {
       "id": 1,
-      "name": "43",
-      "color": "màu nho33123",
-      "typeProduct": "1"
+      "name": "macbook m10",
+      "color": "silver",
+      "quantity": 100,
+      "date": "22/12/2001",
+      "typeProduct": 1
     },
     {
       "id": 2,
-      "name": "macbook pro 2023",
-      "color": "màu bạc",
+      "name": "ip32ewrwerwer414342",
+      "color": "blackrưerwerwe42342rwer",
+      "quantity": 2,
+      "date": "13/12/2045",
       "typeProduct": "1"
+    },
+    {
+      "name": "macbook2",
+      "color": "pink",
+      "quantity": 199,
+      "date": "14/12/2001",
+      "typeProduct": 1,
+      "id": 3
+    },
+    {
+      "name": "msi",
+      "color": "red",
+      "quantity": 189,
+      "date": "14/02/2001",
+      "typeProduct": 1,
+      "id": 4
+    },
+    {
+      "name": "samsung",
+      "color": "pink",
+      "quantity": 100,
+      "date": "14/02/2001",
+      "typeProduct": 1,
+      "id": 5
+    },
+    {
+      "name": "samsung",
+      "color": "trawngs",
+      "quantity": 5,
+      "date": "22/12/2001",
+      "typeProduct": "2",
+      "id": 6
     }
   ],
   "types": [
@@ -20,7 +56,7 @@
     },
     {
       "id": 2,
-      "type": "laptop gaming"
+      "type": "laptop chơi game"
     }
   ]
 }

@@ -87,10 +87,6 @@ function CustomerEditForm() {
         })}
         onSubmit={(values, { setSubmitting }) => {
           try {
-            // if (typeof values.gender === "string" && typeof values.typeId === "string") {
-            //   values.gender = parseInt(values.gender);
-            //   values.typeId = parseInt(values.typeId);
-            // }
             customerService.edit(values);
             setSubmitting(false);
             toast("Sửa thông tin khách hàng thành công");
