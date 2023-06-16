@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "iphone x",
+      "price": 1000,
+      "typeProduct": 1,
+      "date": "14/02/2001"
+    },
+    {
+      "id": 2,
+      "name": "macbook m1",
+      "price": 2000,
+      "typeProduct": 2,
+      "date": "15/02/2001"
+    },
+    {
+      "id":3,
+      "name": "dell imperson 7559",
+      "price": 3000,
+      "typeProduct": 3,
+      "date": "16/02/2001"
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "điện thoại"
+    },
+    {
+      "id": 2,
+      "type": "máy tính bản"
+    },
+    {
+      "id": 3,
+      "type": "laptop"
+    }
+  ]
+}

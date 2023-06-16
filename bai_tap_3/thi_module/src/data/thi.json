@@ -1,0 +1,56 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "code": "PROD-001",
+      "name": "thuốc giảm đau",
+      "moTa": "màu vàng",
+      "typeProduct": 1,
+      "price": 1000,
+      "quantity": 10,
+      "date": "14/02/2001"
+    },
+    {
+      "id": 2,
+      "code": "PROD-002",
+      "name": "thuốc hạ sốt",
+      "moTa": "màu trắng",
+      "typeProduct": 2,
+      "price": 2000,
+      "quantity": 20,
+      "date": "16/02/2001"
+    },
+    {
+      "code": "a",
+      "name": "a",
+      "moTa": "a",
+      "typeProduct": 1,
+      "price": "12",
+      "quantity": 12,
+      "date": "4/12/2004",
+      "id": 3
+    },
+    {
+      "code": "a",
+      "name": "a",
+      "moTa": "á",
+      "typeProduct": 1,
+      "price": "12",
+      "quantity": 12,
+      "date": "14/02/2001",
+      "id": 4
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "thực phẩm chức năng",
+      "moTa": "màu vàng"
+    },
+    {
+      "id": 2,
+      "type": "thuốc điều trị",
+      "moTa": "màu trắng"
+    }
+  ]
+}
