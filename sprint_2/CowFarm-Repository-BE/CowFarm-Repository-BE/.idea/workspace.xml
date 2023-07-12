@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ef5715a0-aa82-483d-8449-35b6fd2e65a3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/CowFarmApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/CowFarmApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/controller/RestCartDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/controller/RestCartDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/controller/RestProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/controller/RestProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/model/order/PurchaseHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/model/order/PurchaseHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/repository/ICartDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/repository/ICartDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/serivce/ICartDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/serivce/ICartDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/serivce/impl/CartDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/serivce/impl/CartDetailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/cart/cart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/cart/cart.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/cart/cart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/cart/cart.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/detail/detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/detail/detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/product/product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/product/product.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/product/product.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/product/product.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/purchase-history/purchase-history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/purchase-history/purchase-history.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/purchase-history/purchase-history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/purchase-history/purchase-history.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/receipt/receipt.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/receipt/receipt.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/service/cart-detail.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/service/cart-detail.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cow_farm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cow_farm.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../cow_farm.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo-git/C0922G1-Repo-FE" beforeDir="false" afterPath="$PROJECT_DIR$/../demo-git/C0922G1-Repo-FE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../prototype/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../prototype/home_page.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2OcxfxwKvYN97HRSdqs3YXXYHG3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/cow_farm" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ef5715a0-aa82-483d-8449-35b6fd2e65a3" name="Changes" comment="" />
+      <created>1681873779013</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681873779013</updated>
+      <workItem from="1681873781196" duration="109000" />
+      <workItem from="1682249450901" duration="98000" />
+      <workItem from="1682819519800" duration="19000" />
+      <workItem from="1689129714961" duration="10000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="139" key="FileChooserDialogImpl" timestamp="1689129723778">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="463" y="139" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1689129723778" />
+  </component>
+</project>
