@@ -14,7 +14,7 @@ public class RestProductController {
     private IProductService productService;
 
 
-    @GetMapping("api/product/list")
+    @GetMapping("api/product/list") //sổ list sản phẩm
     public ResponseEntity<List<Product>> findAll() {
         List<Product> products = productService.findAll();
         if (products.isEmpty()) {
@@ -24,7 +24,7 @@ public class RestProductController {
         }
     }
 
-    @GetMapping("api/product")
+    @GetMapping("api/product") // tìm sản phẩm theo tên
     public ResponseEntity<List<Product>> findAll(@RequestParam(defaultValue = "", required = false) String nameSearch) {
         List<Product> products = productService.findAllByName(nameSearch);
         if (products.isEmpty()) {
@@ -34,7 +34,7 @@ public class RestProductController {
         }
     }
 
-    @GetMapping("/api/product-detail/{productId}")
+    @GetMapping("/api/product-detail/{productId}") // tìm sản phẩm chi tiết
     public ResponseEntity<Product> findProductById(@PathVariable Long productId) {
         Product product = productService.findById(productId);
         if (product == null) {

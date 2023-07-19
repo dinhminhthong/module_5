@@ -31,7 +31,7 @@ public class SecurityController {
     private AuthenticationManager authenticationManager;
 
 
-    @PostMapping("/login")
+    @PostMapping("/login")  // xác thực
     public ResponseEntity<?> authenticateUser(@RequestBody @Valid LoginRequest loginRequest) {
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword());
         Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);

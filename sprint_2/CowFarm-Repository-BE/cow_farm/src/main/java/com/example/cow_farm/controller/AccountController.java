@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-public class AccountController {
+public class  AccountController {
     @Autowired
     private IAccountService accountService;
-    @GetMapping("api/account/{email}")
+    @GetMapping("api/account/{email}") // tk đăng nhập
     public ResponseEntity<Account>findUserByEmail(@PathVariable String email){
         Account account = accountService.findAccountByEmail(email);
         if (account == null){

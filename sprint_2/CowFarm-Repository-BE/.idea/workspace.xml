@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ef5715a0-aa82-483d-8449-35b6fd2e65a3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/CowFarmApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/CowFarmApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/controller/RestCartDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/controller/RestCartDetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/controller/RestProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/controller/RestProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/model/order/PurchaseHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/model/order/PurchaseHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/repository/ICartDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/repository/ICartDetailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/serivce/ICartDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/serivce/ICartDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/serivce/impl/CartDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cow_farm/src/main/java/com/example/cow_farm/serivce/impl/CartDetailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/cart/cart.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/cart/cart.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/cart/cart.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/cart/cart.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/detail/detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/detail/detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/product/product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/product/product.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/product/product.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/product/product.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/purchase-history/purchase-history.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/purchase-history/purchase-history.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/purchase-history/purchase-history.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/purchase-history/purchase-history.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/receipt/receipt.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/receipt/receipt.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/service/cart-detail.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CowFarm-Repository-FE/cow-farm/src/app/service/cart-detail.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cow_farm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cow_farm.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../cow_farm.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../demo-git/C0922G1-Repo-FE" beforeDir="false" afterPath="$PROJECT_DIR$/../demo-git/C0922G1-Repo-FE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../prototype/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../prototype/home_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bai_tap_3/next/.idea/next.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../bai_tap_3/store/.idea/store.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/posts/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/posts/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/product/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/product/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/product/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/product/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/product/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/product/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/product/src/component/ProductCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/product/src/component/ProductCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/product/src/component/ProductList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/product/src/component/ProductList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/product/src/data/product.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/product/src/data/product.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/product/src/service/ProductSerivce.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/product/src/service/ProductSerivce.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/store/src/component/ProductList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/store/src/component/ProductList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/store/src/data/product.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/store/src/data/product.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bai_tap_3/thi_module/product/src/main/java/com/example/product/service/impl/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../bai_tap_3/thi_module/product/src/main/java/com/example/product/service/impl/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap_2/book/src/component/BookCreate.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap_2/book/src/component/BookCreate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap_2/book/src/component/BookList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap_2/book/src/component/BookList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap_2/book/src/data/book.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap_2/book/src/data/book.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap_2/book/src/service/BookService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap_2/book/src/service/BookService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap_2/case_study/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap_2/case_study/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../baitap_2/case_study/src/component/customer/CustomerAddForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../baitap_2/case_study/src/component/customer/CustomerAddForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +31,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2OcxfxwKvYN97HRSdqs3YXXYHG3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -38,12 +42,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/cow_farm" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/codegym/module_5/sprint_2/CowFarm-Repository-BE/cow_farm",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -59,6 +73,9 @@
       <workItem from="1682249450901" duration="98000" />
       <workItem from="1682819519800" duration="19000" />
       <workItem from="1689129714961" duration="10000" />
+      <workItem from="1689582688470" duration="1306000" />
+      <workItem from="1689584173098" duration="290000" />
+      <workItem from="1689584494828" duration="8000" />
     </task>
     <servers />
   </component>
@@ -75,12 +92,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="463" y="139" key="FileChooserDialogImpl" timestamp="1689129723778">
-      <screen x="0" y="0" width="1366" height="768" />
-    </state>
-    <state x="463" y="139" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1689129723778" />
   </component>
 </project>

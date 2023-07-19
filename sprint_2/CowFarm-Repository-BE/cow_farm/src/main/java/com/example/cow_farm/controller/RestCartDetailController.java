@@ -35,7 +35,7 @@ public class RestCartDetailController {
     @Autowired
     private IPurchaseService purchaseService;
 
-    @GetMapping("product-detail/addCart/{productId}/{accountId}/{quantity}")
+    @GetMapping("product-detail/addCart/{productId}/{accountId}/{quantity}") //lưu sản phẩm
     public ResponseEntity<CartDetail> saveCartDetailByUserIdAndProductId(@PathVariable Long productId,
                                                                          @PathVariable Long accountId, @PathVariable int quantity) {
         Product product = productService.findById(productId);
@@ -70,43 +70,43 @@ public class RestCartDetailController {
         return new ResponseEntity<>(cartDetail1, HttpStatus.CREATED);
     }
 
-    @GetMapping("{accountId}")
+    @GetMapping("{accountId}") // tìm giỏ hàng theo accout (mỗi tk có 1 giỏ hàng, giỏ hàng có nhiều sản phẩm)
     public ResponseEntity<List<ICartDetailDto2>> findAllCartByAccountId(@PathVariable Long accountId) {
         List<ICartDetailDto2> cartDetailDtoList = cartDetailService.findvAllByAccountId(accountId);
         return new ResponseEntity<>(cartDetailDtoList, HttpStatus.OK);
     }
 
-    @DeleteMapping("cart-detail/{cartId}/{productId}")
+    @DeleteMapping("cart-detail/{cartId}/{productId}") // xóa theo sản phẩm, theo cart
     public ResponseEntity<?> deleteCartDetailByProductId(@PathVariable Long cartId, @PathVariable Long productId) {
         cartDetailService.deleteByProductId(cartId, productId);
         this.cartService.deleteByCartId(cartId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("deleteAll/cart-detail/{accountId}")
+    @DeleteMapping("deleteAll/cart-detail/{accountId}") // khi thanh toán sẽ reset giỏ hàng về 0
     public ResponseEntity<?> deleteAllCartDetailByAccountId(@PathVariable Long accountId) {
         this.cartDetailService.deleteAllCartVDetail(accountId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("cart-detail/updateQuantity/{cartDetailId}/{quantity}")
+    @GetMapping("cart-detail/updateQuantity/{cartDetailId}/{quantity}") // khi thanh toán thì sản phẩm sẽ bị trừ đi số lượng
     public ResponseEntity<?> updateQuantityOfCartDetailByCartDetailId(@PathVariable Long cartDetailId, @PathVariable int quantity) {
         this.cartDetailService.updateQuantityOfCartDetail(quantity, cartDetailId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("cart-detail/purchaseHistory/list/{accountId}")
+    @GetMapping("cart-detail/purchaseHistory/list/{accountId}") // lịch sử mua hàng
     public ResponseEntity<?> findAllPurchaseHistoryByAccountId(@PathVariable Long accountId) {
         List<PurchaseHistory> purchaseHistories = this.purchaseService.findAllByAccount_AccountId(accountId);
         return new ResponseEntity<>(purchaseHistories, HttpStatus.OK);
     }
-    @GetMapping("cart-detail/purchaseHistory/detail/{purchaseHistoryId}")
+    @GetMapping("cart-detail/purchaseHistory/detail/{purchaseHistoryId}") // coi chi tiết lịch sử mua hàng
     public ResponseEntity<List<ICartDetailDto2>> findAllPurchaseHistoryByPurchaseHistoryId(@PathVariable Long purchaseHistoryId) {
         List<ICartDetailDto2> purchaseHistoriesDetail = this.cartDetailService.findAllvCartDetailByPurchaseHistory(purchaseHistoryId);
         return new ResponseEntity<>(purchaseHistoriesDetail, HttpStatus.OK);
     }
 
-    @GetMapping("cart-detail/purchaseHistory/{accountId}/{total}")
+    @GetMapping("cart-detail/purchaseHistory/{accountId}/{total}") // khi thanh toán thì vào bảng lịch sử
     public ResponseEntity<?> AddNewPurchaseHistory(
             @PathVariable Long accountId,
             @PathVariable int total) {
