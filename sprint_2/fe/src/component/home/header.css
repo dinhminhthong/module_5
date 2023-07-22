@@ -1,0 +1,45 @@
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f1; /* Màu nền header */
+    padding: 10px; /* Khoảng cách giữa các thành phần bên trong header */
+}
+
+/* Định dạng các mục trong menu (ul) */
+#nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Định dạng các mục con trong menu (li) */
+#nav li {
+    display: inline-block;
+    margin-right: 15px; /* Khoảng cách giữa các mục menu */
+}
+
+/* Định dạng các liên kết (a) trong menu */
+#nav li a {
+    text-decoration: none;
+    color: #333; /* Màu chữ liên kết */
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Định dạng hình ảnh logo */
+#nav li a img {
+    height: 40px;
+    width: auto; /* Cho phép hình ảnh tự động điều chỉnh chiều rộng */
+    vertical-align: middle; /* Để canh giữa hình ảnh theo chiều dọc */
+}
+/* Định dạng liên kết khi được hover */
+#nav li a:hover {
+    color: #ff0000; /* Đổi màu chữ khi hover */
+}
+
+/* Định dạng liên kết khi active (được chọn) */
+#nav li a:active {
+    color: #0000ff; /* Đổi màu chữ khi được chọn */
+}
