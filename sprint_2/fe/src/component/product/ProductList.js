@@ -327,14 +327,19 @@ return(
 
         {/* Products Start */}
         <div className="container">
+            <div className="mx-auto text-center mb-5" style={{ maxWidth: 500 }}>
+                            <h6 className="text-primary text-uppercase">Products</h6>
+                            <h1 className="display-5">Our Fresh &amp; Organic Products</h1>
+                        </div>
             <div className="row">
                 <div className="col-4">
                     <div className="card">
-                        <image src="https://tse4.mm.bing.net/th?id=OIP.WNF9pDis5AWZ_qIgBNsWywHaHa&pid=Api&P=0&h=180" alt="Sần phảm nông sản" className="card-img-top"/>
+                        <img src="https://tse4.mm.bing.net/th?id=OIP.WNF9pDis5AWZ_qIgBNsWywHaHa&pid=Api&P=0&h=180" alt="Sần phảm nông sản" className="card-img-top"/>
                         <div className="card-body">
                             <h5 className="card-title">Rau củ xanh</h5>
-                            <p className="card-text">ỨDĐSJHDFHSỤDHKUHFS</p>
+                            <p className="card-text">Sản phẩm từ thiên nhiên, chất lượng trên từng gam </p>
                         </div>
+                        <NavLink to='/detail' className="btn btn-primary">Deatail</NavLink>
                     </div>
                 </div>
             </div>
