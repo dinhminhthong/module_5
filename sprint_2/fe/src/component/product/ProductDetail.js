@@ -1,1292 +1,637 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import * as productService from "../../service/ProductService";
+import {useParams} from "react-router";
+import {NavLink} from "react-router-dom";
 
 const ProductDetail = () => {
+    const [product, setProduct] = useState([]);
+    const param = useParams()
+
+    useEffect(() => {
+        const detailP = async () => {
+            const rs = await productService.detail(param.id)
+            console.log(rs)
+            setProduct(rs)
+        }
+        detailP()
+    },[param.id])
+
+
+
     return (
-        <div>
-            {/* Product breadcrumb */}
-            <div className="product-breadcrumb">
-                {/* Container */}
-                <div className="container container--type-2">
-                    {/* D-flex */}
-                    <div className="product-breadcrumb__d-flex d-flex align-items-center">
-                        {/* Breadcrumb */}
-                        <ol className="breadcrumb text-uppercase">
-                            <li className="breadcrumb__item">
-                                <a href="index.html">home </a>
-                            </li>
-                            <li className="breadcrumb__item">
-                                <a href="product.html">product</a>
-                            </li>
-                            <li className="breadcrumb__item">
-                                <a href="product.html">product layout</a>
-                            </li>
-                            <li className="breadcrumb__item active" aria-current="page">
-                                default
-                            </li>
-                        </ol>
-                        {/* End breadcrumb */}
+        <>
+            {/* Topbar Start */}
+            <div className="container-fluid px-5 d-none d-lg-block">
+                <div className="row gx-5 py-3 align-items-center">
+                    <div className="col-lg-3">
+                        <div className="d-flex align-items-center justify-content-start">
+                            <i className="bi bi-phone-vibrate fs-1 text-primary me-2"/>
+                            <h2 className="mb-0">+012 345 6789</h2>
+                        </div>
                     </div>
-                    {/* End d-flex */}
-                </div>
-                {/* End container */}
-            </div>
-            {/* End product breadcrumb */}
-            {/* Product */}
-            <div className="product">
-                {/* Container */}
-                <div className="container container--type-2">
-                    {/* Product main */}
-                    <div className="product__main d-flex">
-                        {/* Product main image */}
-                        <ul className="product__main-image">
-                            <li className="active js-product-main-image">
-                                <a href="#">
-                                    <img
-                                        alt="Image"
-                                        src="http://demo2.ninethemes.net/durotan20/html/assets/products/1/2_1-a.jpg"
-                                    />
-                                </a>
-                            </li>
-                        </ul>
-                        {/* End product main image */}
-                        {/* Product right */}
-                        <div className="product__right">
-                            {/* Tag */}
-                            <div className="product__tag">Washable</div>
-                            {/* End tag */}
-                            {/* Product title */}
-                            <h1 className="product__title">Wool/Cashmere basic cardigan</h1>
-                            {/* End product title */}
-                            {/* Product price */}
-                            <div className="product__price">
-                                $49.5
-                                {/* <span class="product-price__new">$49.5</span>
-        <span class="product-price__old">$69.5</span> */}
-                            </div>
-                            {/* End product price */}
-                            {/* Status */}
-                            <div className="product__status">
-                                <i className="lnir lnir-package" />
-                                <span>Status:</span>
-                                <span className="status__value status__value--in-stock">
-                  In stock
-                </span>
-                            </div>
-                            {/* End product status */}
-                            {/* Options */}
-                            <div className="product__options">
-                                {/* Product colors */}
-                                <div className="product__colors d-flex align-items-center">
-                                    {/* Available colors */}
-                                    <ul className="product__available-colors">
-                                        <li className="active">
-                                            <a
-                                                href="#"
-                                                style={{ background: "#af957c" }}
-                                                className="open-tooltip"
-                                            >
-                                                <span className="custom-tooltip">Brown</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                style={{ background: "#144412" }}
-                                                className="open-tooltip"
-                                            >
-                                                <span className="custom-tooltip">Green</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                style={{ background: "#1c1b20" }}
-                                                className="open-tooltip"
-                                            >
-                                                <span className="custom-tooltip">Black</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a
-                                                href="#"
-                                                style={{ background: "#8c000d" }}
-                                                className="open-tooltip"
-                                            >
-                                                <span className="custom-tooltip">Red</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    {/* End available colors */}
-                                    {/* Current color */}
-                                    <div className="product__current-color">
-                                        Color: <span>Brown</span>
-                                    </div>
-                                    {/* End current color */}
-                                </div>
-                                {/* End product colors */}
-                                {/* Product sizes */}
-                                <div className="product__sizes">
-                                    <select>
-                                        <option>Choose your size</option>
-                                        <option>S</option>
-                                        <option>M</option>
-                                        <option>L</option>
-                                        <option>XL</option>
-                                        <option>XXL</option>
-                                    </select>
-                                </div>
-                                {/* End product sizes */}
-                            </div>
-                            {/* End options */}
-                            {/* Product action */}
-                            <div className="product__action js-product-action">
-                                {/* Product quantity and add to cart */}
-                                <div className="product__quantity-and-add-to-cart d-flex">
-                                    {/* Quantity */}
-                                    <div className="product__quantity">
-                                        <div className="product-quantity__minus js-quantity-down">
-                                            <a href="#">
-                                                <i className="lnil lnil-minus" />
-                                            </a>
-                                        </div>
-                                        <input
-                                            type="text"
-                                            defaultValue={2}
-                                            className="product-quantity__input js-quantity-field"
-                                        />
-                                        <div className="product-quantity__plus js-quantity-up">
-                                            <a href="#">
-                                                <i className="lnil lnil-plus" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    {/* End quantity */}
-                                    {/* Add to cart */}
-                                    <div className="product__add-to-cart">
-                                        <a href="#" className="eighth-button">
-                                            Add to cart
-                                        </a>
-                                    </div>
-                                    {/* End add to cart */}
-                                </div>
-                                {/* End product quantity and add to cart */}
-                                {/* Buy now */}
-                                <div className="product__buy-now">
-                                    <a href="#" className="second-button">
-                                        Buy now
-                                    </a>
-                                </div>
-                                {/* End buy now */}
-                            </div>
-                            {/* End product action */}
-                            {/* Product second action */}
-                            <ul className="product__second-action d-flex">
-                                <li>
-                                    <a href="#">
-                                        <i className="lnil lnil-heart" /> Add to wishlist
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i className="lnil lnil-reload" /> Compare
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i className="lnil lnil-tshirt" /> Size guide
-                                    </a>
-                                </li>
-                            </ul>
-                            {/* End product section action */}
-                            {/* Product information */}
-                            <ul className="product__information">
-                                <li>
-                                    <span>SKU</span>
-                                    <p>SS-501</p>
-                                </li>
-                                <li>
-                                    <span>Category</span>
-                                    <p>Men’s Clothing</p>
-                                </li>
-                                <li>
-                                    <span>Tags</span>
-                                    <p>
-                                        <a href="#">shirt</a>, <a href="#">men</a>,
-                                        <a href="#">basic</a>, <a href="#">cotton</a>
-                                    </p>
-                                </li>
-                            </ul>
-                            {/* End product information */}
-                            {/* Product social */}
-                            <ul className="product__socials">
-                                <li>
-                                    <a href="https://twitter.com" target="_blank">
-                                        <i className="lnil lnil-twitter" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://facebook.com" target="_blank">
-                                        <i className="lnil lnil-facebook" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://instagram.com" target="_blank">
-                                        <i className="lnil lnil-Instagram" />
-                                    </a>
-                                </li>
-                            </ul>
-                            {/* End product social */}
-                            {/* Mobile tabs */}
-                            <div className="product__mobile-tabs">
-                                {/* Accordion */}
-                                <div className="accordion active js-accordion">
-                                    {/* Title */}
-                                    <div className="accordion__title js-accordion-title">
-                                        Description
-                                    </div>
-                                    {/* End title */}
-                                    {/* Content */}
-                                    <div className="accordion__content js-accordion-content">
-                                        <h3>Introduce</h3>
-                                        <p>
-                                            Tailored line. Wool mix fabric. Long design. Long buttoned
-                                            sleeve. Lapel with notch. Back slit. Two pockets with
-                                            flaps on the front. Button up. Inner lining. Inner pocket.
-                                            Back length 95.0 cm.
-                                        </p>
-                                        <h3>Material &amp; Washing Instructions</h3>
-                                        <p>
-                                            Composition: 51% wool,45% polyester,2% acrylic,2% viscose.
-                                            <br />
-                                            Lining: 53% cotton,47% polyester.
-                                            <br />
-                                            Sleeve lining: 100% polyester
-                                        </p>
-                                        <ul className="tab__features">
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-washing.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>No Washing</span>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-bleach.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>do not bleach</span>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-ironing.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>ironing max 110 0 c / 230 0 f</span>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-dry-cleaning.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>dry cleaning perchloroethylene</span>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-tumble-dry.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>do not tumble dry</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {/* End content */}
-                                </div>
-                                {/* End accordion */}
-                                {/* Accordion */}
-                                <div className="accordion js-accordion">
-                                    {/* Title */}
-                                    <div className="accordion__title js-accordion-title">
-                                        Ship &amp; return
-                                    </div>
-                                    {/* End title */}
-                                    {/* Content */}
-                                    <div className="accordion__content js-accordion-content">
-                                        <h3>Shipping</h3>
-                                        <ul>
-                                            <li>
-                                                Complimentary ground shipping within 1 to 7 business
-                                                days
-                                            </li>
-                                            <li>
-                                                In-store collection available within 1 to 7 business
-                                                days
-                                            </li>
-                                            <li>
-                                                Next-day and Express delivery options also available
-                                            </li>
-                                            <li>
-                                                Purchases are delivered in an orange box tied with a
-                                                Bolduc ribbon.
-                                            </li>
-                                            <li>
-                                                See the delivery FAQs for details on shipping methods,
-                                                costs and delivery times
-                                            </li>
-                                        </ul>
-                                        <h3>Returns &amp; Exchanges</h3>
-                                        <ul>
-                                            <li>Easy and complimentary, within 14 days</li>
-                                            <li>See conditions and procedure in our return FAQs</li>
-                                            <li>
-                                                Customer is responsible for shipping charges when making
-                                                returns and shipping/handling fees of original purchase
-                                                is non-refundable.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {/* End content */}
-                                </div>
-                                {/* End accordion */}
-                                {/* Accordion */}
-                                <div className="accordion js-accordion">
-                                    {/* Title */}
-                                    <div className="accordion__title js-accordion-title">
-                                        Review (3)
-                                    </div>
-                                    {/* End title */}
-                                    {/* Content */}
-                                    <div className="accordion__content js-accordion-content">
-                                        <h3 className="review__title">Customer’s Review (2)</h3>
-                                        {/* Review */}
-                                        <div className="review d-flex">
-                                            {/* Avatar */}
-                                            <div className="review__avatar">
-                                                <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/images/default/avatar_1.jpg 1560w,
-                  assets/images/default/avatar_1.jpg 3120w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    className="lazyload"
-                                                />
-                                            </div>
-                                            {/* End avatar */}
-                                            {/* Details */}
-                                            <div className="review__details">
-                                                {/* Title and rating */}
-                                                <div className="review__title-and-rating d-flex">
-                                                    {/* Name */}
-                                                    <div className="review__title">
-                                                        Quality product &amp; very comfortable!
-                                                    </div>
-                                                    {/* End name */}
-                                                    {/* Rating */}
-                                                    <div className="review__rating">
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                    </div>
-                                                    {/* End rating */}
-                                                </div>
-                                                {/* End title and rating */}
-                                                {/* Content */}
-                                                <div className="review__content">
-                                                    Thanks to the precious advice of the store owner, I
-                                                    choose this wonderful product. I absolutely love it!
-                                                    Additionally, my order was sent very quickly. I'm a
-                                                    happy customer and I'll order again!
-                                                </div>
-                                                {/* End content */}
-                                                {/* Meta */}
-                                                <div className="review__meta">
-                                                    <span>andy robertson.</span> on 25 April, 2022
-                                                </div>
-                                                {/* End meta */}
-                                            </div>
-                                            {/* End details */}
-                                        </div>
-                                        {/* End review */}
-                                        {/* Review */}
-                                        <div className="review d-flex">
-                                            {/* Avatar */}
-                                            <div className="review__avatar">
-                                                <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/images/default/avatar_2.jpg 1560w,
-                  assets/images/default/avatar_2.jpg 3120w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    className="lazyload"
-                                                />
-                                            </div>
-                                            {/* End avatar */}
-                                            {/* Details */}
-                                            <div className="review__details">
-                                                {/* Title and rating */}
-                                                <div className="review__title-and-rating d-flex align">
-                                                    {/* Name */}
-                                                    <div className="review__title">Awesome product</div>
-                                                    {/* End name */}
-                                                    {/* Rating */}
-                                                    <div className="review__rating">
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                    </div>
-                                                    {/* End rating */}
-                                                </div>
-                                                {/* End title and rating */}
-                                                {/* Content */}
-                                                <div className="review__content">
-                                                    I love it &amp; certainly that i’ll buy it once again.
-                                                    Perfection experience!
-                                                </div>
-                                                {/* End content */}
-                                                {/* Meta */}
-                                                <div className="review__meta">
-                                                    <span>Alexander Arnold.</span> on 25 April, 2022
-                                                </div>
-                                                {/* End meta */}
-                                            </div>
-                                            {/* End details */}
-                                        </div>
-                                        {/* End review */}
-                                        <h3>Add A Review</h3>
-                                        {/* Form */}
-                                        <form className="review__form">
-                                            {/* Required fields */}
-                                            <div className="form__required-fields">
-                                                Your email address will not be published. Required
-                                                fields are marked<span>*</span>
-                                            </div>
-                                            {/* End required fields */}
-                                            {/* Your rating */}
-                                            <div className="form__your-rating d-flex align-items-center">
-                                                <div className="your-rating__title">Your rating</div>
-                                                <div className="your-rating__content js-rating-content">
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={1}
-                                                    />
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={2}
-                                                    />
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={3}
-                                                    />
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={4}
-                                                    />
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={5}
-                                                    />
-                                                    <div className="d-none">
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={1}
-                                                        />
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={2}
-                                                        />
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={3}
-                                                        />
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={4}
-                                                        />
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={5}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/* End your rating */}
-                                            {/* Form group */}
-                                            <div className="form-group">
-                                                <input
-                                                    type="text"
-                                                    name="subject"
-                                                    className="form-group__input"
-                                                    placeholder="Give your review a tittle "
-                                                />
-                                            </div>
-                                            {/* End form group */}
-                                            {/* Form group */}
-                                            <div className="form-group">
-                        <textarea
-                            placeholder="Write your review here"
-                            className="form-group__textarea"
-                            rows={3}
-                            defaultValue={""}
-                        />
-                                            </div>
-                                            {/* End form group */}
-                                            {/* Row */}
-                                            <div className="row">
-                                                <div className="col-md-6">
-                                                    {/* Form group */}
-                                                    <div className="form-group">
-                                                        <input
-                                                            type="text"
-                                                            name="name"
-                                                            className="form-group__input"
-                                                            placeholder="Full Name"
-                                                        />
-                                                    </div>
-                                                    {/* End form group */}
-                                                </div>
-                                                <div className="col-md-6">
-                                                    {/* Form group */}
-                                                    <div className="form-group">
-                                                        <input
-                                                            type="email"
-                                                            name="email"
-                                                            className="form-group__input"
-                                                            placeholder="Your E-mail*"
-                                                        />
-                                                    </div>
-                                                    {/* End form group */}
-                                                </div>
-                                            </div>
-                                            {/* End row */}
-                                            {/* Form checkbox */}
-                                            <div className="form-checkbox">
-                                                <input
-                                                    type="checkbox"
-                                                    id="checkbox1"
-                                                    className="form-checkbox__input"
-                                                />
-                                                <label
-                                                    className="form-checkbox__label"
-                                                    htmlFor="checkbox1"
-                                                >
-                                                    Save my name &amp; email in this browser for next time
-                                                    i comment
-                                                </label>
-                                            </div>
-                                            {/* End form checkbox */}
-                                            {/* Action */}
-                                            <div className="form__action">
-                                                <button type="submit" className="second-button">
-                                                    Submit review
-                                                </button>
-                                            </div>
-                                            {/* End action */}
-                                        </form>
-                                        {/* End form */}
-                                    </div>
-                                    {/* End content */}
-                                </div>
-                                {/* End accordion */}
-                                {/* Accordion */}
-                                <div className="accordion js-accordion">
-                                    {/* Title */}
-                                    <div className="accordion__title js-accordion-title">
-                                        Ask a question
-                                    </div>
-                                    {/* End title */}
-                                    {/* Content */}
-                                    <div className="accordion__content js-accordion-content">
-                                        {/* Form */}
-                                        <form className="contact-page__form">
-                                            {/* Form group */}
-                                            <div className="form-group">
-                                                <input
-                                                    type="text"
-                                                    name="subject"
-                                                    className="form-group__input"
-                                                    placeholder="Subject (optional)"
-                                                />
-                                            </div>
-                                            {/* End form group */}
-                                            {/* Form group */}
-                                            <div className="form-group">
-                        <textarea
-                            placeholder="Write your question here"
-                            className="form-group__textarea"
-                            rows={5}
-                            defaultValue={""}
-                        />
-                                            </div>
-                                            {/* End form group */}
-                                            {/* Row */}
-                                            <div className="row">
-                                                <div className="col-md-6">
-                                                    {/* Form group */}
-                                                    <div className="form-group">
-                                                        <input
-                                                            type="text"
-                                                            name="name"
-                                                            className="form-group__input"
-                                                            placeholder="Full Name"
-                                                        />
-                                                    </div>
-                                                    {/* End form group */}
-                                                </div>
-                                                <div className="col-md-6">
-                                                    {/* Form group */}
-                                                    <div className="form-group">
-                                                        <input
-                                                            type="email"
-                                                            name="email"
-                                                            className="form-group__input"
-                                                            placeholder="Your E-mail*"
-                                                        />
-                                                    </div>
-                                                    {/* End form group */}
-                                                </div>
-                                            </div>
-                                            {/* End row */}
-                                            {/* Action */}
-                                            <div className="form__action">
-                                                <button type="submit" className="second-button">
-                                                    Ask a question
-                                                </button>
-                                            </div>
-                                            {/* End action */}
-                                        </form>
-                                        {/* End form */}
-                                    </div>
-                                    {/* End content */}
-                                </div>
-                                {/* End accordion */}
-                            </div>
-                            {/* End mobile tabs */}
-                            {/* Product tabs */}
-                            <ul className="product__tabs d-flex">
-                                <li>
-                                    <a href="#" className="js-open-tab" data-id={1}>
-                                        Description
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" className="js-open-tab" data-id={2}>
-                                        Ship &amp; return
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" className="js-open-tab" data-id={3}>
-                                        Review (3)
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" className="js-open-tab" data-id={4}>
-                                        Ask a question
-                                    </a>
-                                </li>
-                            </ul>
-                            {/* End product tabs */}
-                            {/* Tab description */}
-                            <div className="tab js-tab" data-id={1}>
-                                <div className="tab__overlay js-close-tab" />
-                                {/* Tab content */}
-                                <div className="tab__content">
-                                    {/* Heading */}
-                                    <div className="tab__heading d-flex align-items-center">
-                                        {/* H3 */}
-                                        <h3 className="tab__h3">Description</h3>
-                                        {/* End h3 */}
-                                        {/* Close */}
-                                        <div className="tab__close">
-                                            <a href="#" className="js-close-tab">
-                                                <i className="lnil lnil-close" />
-                                            </a>
-                                        </div>
-                                        {/* End close */}
-                                    </div>
-                                    {/* End heading */}
-                                    {/* Description */}
-                                    <div className="tab__description">
-                                        <h3>Introduce</h3>
-                                        <p>
-                                            Tailored line. Wool mix fabric. Long design. Long buttoned
-                                            sleeve. Lapel with notch. Back slit. Two pockets with
-                                            flaps on the front. Button up. Inner lining. Inner pocket.
-                                            Back length 95.0 cm.
-                                        </p>
-                                        <h3>Material &amp; Washing Instructions</h3>
-                                        <p>
-                                            Composition: 51% wool,45% polyester,2% acrylic,2% viscose.
-                                            <br />
-                                            Lining: 53% cotton,47% polyester.
-                                            <br />
-                                            Sleeve lining: 100% polyester
-                                        </p>
-                                        <ul className="tab__features">
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-washing.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>No Washing</span>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-bleach.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>do not bleach</span>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-ironing.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>ironing max 110 0 c / 230 0 f</span>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-dry-cleaning.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>dry cleaning perchloroethylene</span>
-                                            </li>
-                                            <li>
-                                                <p>
-                                                    <img
-                                                        src="assets/images/default/icon-tumble-dry.png"
-                                                        alt="Icon"
-                                                    />
-                                                </p>
-                                                <span>do not tumble dry</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {/* End description */}
-                                </div>
-                                {/* End tab content */}
-                            </div>
-                            {/* End tab description */}
-                            {/* Tab ship & return */}
-                            <div className="tab js-tab" data-id={2}>
-                                <div className="tab__overlay js-close-tab" />
-                                {/* Tab content */}
-                                <div className="tab__content">
-                                    {/* Heading */}
-                                    <div className="tab__heading d-flex align-items-center">
-                                        {/* H3 */}
-                                        <h3 className="tab__h3">Ship &amp; return</h3>
-                                        {/* End h3 */}
-                                        {/* Close */}
-                                        <div className="tab__close">
-                                            <a href="#" className="js-close-tab">
-                                                <i className="lnil lnil-close" />
-                                            </a>
-                                        </div>
-                                        {/* End close */}
-                                    </div>
-                                    {/* End heading */}
-                                    {/* Description */}
-                                    <div className="tab__description">
-                                        <h3>Shipping</h3>
-                                        <ul>
-                                            <li>
-                                                Complimentary ground shipping within 1 to 7 business
-                                                days
-                                            </li>
-                                            <li>
-                                                In-store collection available within 1 to 7 business
-                                                days
-                                            </li>
-                                            <li>
-                                                Next-day and Express delivery options also available
-                                            </li>
-                                            <li>
-                                                Purchases are delivered in an orange box tied with a
-                                                Bolduc ribbon.
-                                            </li>
-                                            <li>
-                                                See the delivery FAQs for details on shipping methods,
-                                                costs and delivery times
-                                            </li>
-                                        </ul>
-                                        <h3>Returns &amp; Exchanges</h3>
-                                        <ul>
-                                            <li>Easy and complimentary, within 14 days</li>
-                                            <li>See conditions and procedure in our return FAQs</li>
-                                            <li>
-                                                Customer is responsible for shipping charges when making
-                                                returns and shipping/handling fees of original purchase
-                                                is non-refundable.
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {/* End description */}
-                                </div>
-                                {/* End tab content */}
-                            </div>
-                            {/* End tab ship & return */}
-                            {/* Tab reviews  */}
-                            <div className="tab js-tab" data-id={3}>
-                                <div className="tab__overlay js-close-tab" />
-                                {/* Tab content */}
-                                <div className="tab__content">
-                                    {/* Heading */}
-                                    <div className="tab__heading d-flex align-items-center">
-                                        {/* H3 */}
-                                        <h3 className="tab__h3">Review (3)</h3>
-                                        {/* End h3 */}
-                                        {/* Close */}
-                                        <div className="tab__close">
-                                            <a href="#" className="js-close-tab">
-                                                <i className="lnil lnil-close" />
-                                            </a>
-                                        </div>
-                                        {/* End close */}
-                                    </div>
-                                    {/* End heading */}
-                                    {/* Description */}
-                                    <div className="tab__description">
-                                        <h3 className="review__title">Customer’s Review (2)</h3>
-                                        {/* Review */}
-                                        <div className="review d-flex">
-                                            {/* Avatar */}
-                                            <div className="review__avatar">
-                                                <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/images/default/avatar_1.jpg 1560w,
-                  assets/images/default/avatar_1.jpg 3120w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    className="lazyload"
-                                                />
-                                            </div>
-                                            {/* End avatar */}
-                                            {/* Details */}
-                                            <div className="review__details">
-                                                {/* Title and rating */}
-                                                <div className="review__title-and-rating d-flex">
-                                                    {/* Name */}
-                                                    <div className="review__title">
-                                                        Quality product &amp; very comfortable!
-                                                    </div>
-                                                    {/* End name */}
-                                                    {/* Rating */}
-                                                    <div className="review__rating">
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                    </div>
-                                                    {/* End rating */}
-                                                </div>
-                                                {/* End title and rating */}
-                                                {/* Content */}
-                                                <div className="review__content">
-                                                    Thanks to the precious advice of the store owner, I
-                                                    choose this wonderful product. I absolutely love it!
-                                                    Additionally, my order was sent very quickly. I'm a
-                                                    happy customer and I'll order again!
-                                                </div>
-                                                {/* End content */}
-                                                {/* Meta */}
-                                                <div className="review__meta">
-                                                    <span>andy robertson.</span> on 25 April, 2022
-                                                </div>
-                                                {/* End meta */}
-                                            </div>
-                                            {/* End details */}
-                                        </div>
-                                        {/* End review */}
-                                        {/* Review */}
-                                        <div className="review d-flex">
-                                            {/* Avatar */}
-                                            <div className="review__avatar">
-                                                <img
-                                                    alt="Image"
-                                                    data-sizes="auto"
-                                                    data-srcset="assets/images/default/avatar_2.jpg 1560w,
-                  assets/images/default/avatar_2.jpg 3120w"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                                                    className="lazyload"
-                                                />
-                                            </div>
-                                            {/* End avatar */}
-                                            {/* Details */}
-                                            <div className="review__details">
-                                                {/* Title and rating */}
-                                                <div className="review__title-and-rating d-flex align">
-                                                    {/* Name */}
-                                                    <div className="review__title">Awesome product</div>
-                                                    {/* End name */}
-                                                    {/* Rating */}
-                                                    <div className="review__rating">
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                        <i className="lnir lnir-star-filled active" />
-                                                    </div>
-                                                    {/* End rating */}
-                                                </div>
-                                                {/* End title and rating */}
-                                                {/* Content */}
-                                                <div className="review__content">
-                                                    I love it &amp; certainly that i’ll buy it once again.
-                                                    Perfection experience!
-                                                </div>
-                                                {/* End content */}
-                                                {/* Meta */}
-                                                <div className="review__meta">
-                                                    <span>Alexander Arnold.</span> on 25 April, 2022
-                                                </div>
-                                                {/* End meta */}
-                                            </div>
-                                            {/* End details */}
-                                        </div>
-                                        {/* End review */}
-                                        <h3>Add A Review</h3>
-                                        {/* Form */}
-                                        <form className="review__form">
-                                            {/* Required fields */}
-                                            <div className="form__required-fields">
-                                                Your email address will not be published. Required
-                                                fields are marked<span>*</span>
-                                            </div>
-                                            {/* End required fields */}
-                                            {/* Your rating */}
-                                            <div className="form__your-rating d-flex align-items-center">
-                                                <div className="your-rating__title">Your rating</div>
-                                                <div className="your-rating__content js-rating-content">
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={1}
-                                                    />
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={2}
-                                                    />
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={3}
-                                                    />
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={4}
-                                                    />
-                                                    <i
-                                                        className="lnir lnir-star-filled js-rating"
-                                                        data-value={5}
-                                                    />
-                                                    <div className="d-none">
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={1}
-                                                        />
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={2}
-                                                        />
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={3}
-                                                        />
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={4}
-                                                        />
-                                                        <input
-                                                            type="radio"
-                                                            name="rating"
-                                                            className="js-rating-input"
-                                                            defaultValue={5}
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {/* End your rating */}
-                                            {/* Form group */}
-                                            <div className="form-group">
-                                                <input
-                                                    type="text"
-                                                    name="subject"
-                                                    className="form-group__input"
-                                                    placeholder="Give your review a tittle "
-                                                />
-                                            </div>
-                                            {/* End form group */}
-                                            {/* Form group */}
-                                            <div className="form-group">
-                        <textarea
-                            placeholder="Write your review here"
-                            className="form-group__textarea"
-                            rows={3}
-                            defaultValue={""}
-                        />
-                                            </div>
-                                            {/* End form group */}
-                                            {/* Row */}
-                                            <div className="row">
-                                                <div className="col-md-6">
-                                                    {/* Form group */}
-                                                    <div className="form-group">
-                                                        <input
-                                                            type="text"
-                                                            name="name"
-                                                            className="form-group__input"
-                                                            placeholder="Full Name"
-                                                        />
-                                                    </div>
-                                                    {/* End form group */}
-                                                </div>
-                                                <div className="col-md-6">
-                                                    {/* Form group */}
-                                                    <div className="form-group">
-                                                        <input
-                                                            type="email"
-                                                            name="email"
-                                                            className="form-group__input"
-                                                            placeholder="Your E-mail*"
-                                                        />
-                                                    </div>
-                                                    {/* End form group */}
-                                                </div>
-                                            </div>
-                                            {/* End row */}
-                                            {/* Form checkbox */}
-                                            <div className="form-checkbox">
-                                                <input
-                                                    type="checkbox"
-                                                    id="checkbox2"
-                                                    className="form-checkbox__input"
-                                                />
-                                                <label
-                                                    className="form-checkbox__label"
-                                                    htmlFor="checkbox2"
-                                                >
-                                                    Save my name &amp; email in this browser for next time
-                                                    i comment
-                                                </label>
-                                            </div>
-                                            {/* End form checkbox */}
-                                            {/* Action */}
-                                            <div className="form__action">
-                                                <button type="submit" className="second-button">
-                                                    Submit review
-                                                </button>
-                                            </div>
-                                            {/* End action */}
-                                        </form>
-                                        {/* End form */}
-                                    </div>
-                                    {/* End description */}
-                                </div>
-                                {/* End tab content */}
-                            </div>
-                            {/* End tab reviews */}
-                            {/* Tab ask a question */}
-                            <div className="tab js-tab" data-id={4}>
-                                <div className="tab__overlay js-close-tab" />
-                                {/* Tab content */}
-                                <div className="tab__content">
-                                    {/* Heading */}
-                                    <div className="tab__heading d-flex align-items-center">
-                                        {/* H3 */}
-                                        <h3 className="tab__h3">Ask a question</h3>
-                                        {/* End h3 */}
-                                        {/* Close */}
-                                        <div className="tab__close">
-                                            <a href="#" className="js-close-tab">
-                                                <i className="lnil lnil-close" />
-                                            </a>
-                                        </div>
-                                        {/* End close */}
-                                    </div>
-                                    {/* End heading */}
-                                    {/* Description */}
-                                    <div className="tab__description">
-                                        {/* Form */}
-                                        <form className="contact-page__form">
-                                            {/* Form group */}
-                                            <div className="form-group">
-                                                <input
-                                                    type="text"
-                                                    name="subject"
-                                                    className="form-group__input"
-                                                    placeholder="Subject (optional)"
-                                                />
-                                            </div>
-                                            {/* End form group */}
-                                            {/* Form group */}
-                                            <div className="form-group">
-                        <textarea
-                            placeholder="Write your question here"
-                            className="form-group__textarea"
-                            rows={5}
-                            defaultValue={""}
-                        />
-                                            </div>
-                                            {/* End form group */}
-                                            {/* Row */}
-                                            <div className="row">
-                                                <div className="col-md-6">
-                                                    {/* Form group */}
-                                                    <div className="form-group">
-                                                        <input
-                                                            type="text"
-                                                            name="name"
-                                                            className="form-group__input"
-                                                            placeholder="Full Name"
-                                                        />
-                                                    </div>
-                                                    {/* End form group */}
-                                                </div>
-                                                <div className="col-md-6">
-                                                    {/* Form group */}
-                                                    <div className="form-group">
-                                                        <input
-                                                            type="email"
-                                                            name="email"
-                                                            className="form-group__input"
-                                                            placeholder="Your E-mail*"
-                                                        />
-                                                    </div>
-                                                    {/* End form group */}
-                                                </div>
-                                            </div>
-                                            {/* End row */}
-                                            {/* Action */}
-                                            <div className="form__action">
-                                                <button type="submit" className="second-button">
-                                                    Ask a question
-                                                </button>
-                                            </div>
-                                            {/* End action */}
-                                        </form>
-                                        {/* End form */}
-                                    </div>
-                                    {/* End description */}
-                                </div>
-                                {/* End tab content */}
-                            </div>
-                            {/* End tab ask a question */}
-                        </div>
-                        {/* End product right */}
-                    </div>
-                    {/* End product main */}
-                </div>
-                {/* End container */}
-            </div>
-            {/* End product */}
-            {/* Sticky add to cart */}
-            <div className="sticky-add-to-cart js-sticky-add-to-cart">
-                {/* Container */}
-                <div className="container container--type-2">
-                    {/* D-flex */}
-                    <div className="sticky-add-to-cart__d-flex d-flex align-items-center">
-                        {/* Product image */}
-                        <div className="sticky-add-to-cart__product-image">
-                            <p>
-                                <img alt="Image" src="assets/products/1/2_1-a.jpg" />
-                            </p>
-                        </div>
-                        {/* End product image */}
-                        {/* Product name */}
-                        <div className="sticky-add-to-cart__product-name">
-                            Double-breasted wool tailored coat
-                        </div>
-                        {/* End product name */}
-                        {/* Product price */}
-                        <div className="sticky-add-to-cart__product-price">$49.5</div>
-                        {/* End product price */}
-                        {/* Product options */}
-                        <div className="sticky-add-to-cart__product-options d-flex align-items-center">
-                            {/* Color */}
-                            <div className="sticky-add-to-cart__color">
-                                <p style={{ background: "#af957c" }} />
-                                <span>Brown</span>
-                            </div>
-                            {/* End color */}
-                            {/* Standard option */}
-                            <div className="sticky-add-to-cart__standard-option">
-                                Choose your size
-                            </div>
-                            {/* End standard option */}
-                        </div>
-                        {/* End product options */}
-                        {/* Quantity */}
-                        <div className="sticky-add-to-cart__quantity">
-                            <div className="sticky-add-to-cart-quantity__minus js-quantity-down">
-                                <a href="#">
-                                    <i className="lnil lnil-minus" />
-                                </a>
-                            </div>
-                            <input
-                                type="text"
-                                defaultValue={2}
-                                className="sticky-add-to-cart-quantity__input js-quantity-field"
-                            />
-                            <div className="sticky-add-to-cart-quantity__plus js-quantity-up">
-                                <a href="#">
-                                    <i className="lnil lnil-plus" />
-                                </a>
-                            </div>
-                        </div>
-                        {/* End quantity */}
-                        {/* Add to cart */}
-                        <div className="sticky-add-to-cart__add-to-cart">
-                            <a href="#" className="second-button">
-                                Add to cart
+                    <div className="col-lg-6">
+                        <div className="d-flex align-items-center justify-content-center">
+                            <a href="index.html" className="navbar-brand ms-lg-5">
+                                <h1 className="m-0 display-4 text-primary">
+                                    <span className="text-secondary">Cow</span>Farm
+                                </h1>
                             </a>
                         </div>
-                        {/* End add to cart */}
                     </div>
-                    {/* End d-flex */}
+                    <div className="col-lg-3">
+                        <div className="d-flex align-items-center justify-content-end">
+                            <a
+                                className="btn btn-primary btn-square rounded-circle me-2"
+                                href="#"
+                            >
+                                <i className="fab fa-twitter"/>
+                            </a>
+                            <a
+                                className="btn btn-primary btn-square rounded-circle me-2"
+                                href="#"
+                            >
+                                <i className="fab fa-facebook-f"/>
+                            </a>
+                            <a
+                                className="btn btn-primary btn-square rounded-circle me-2"
+                                href="#"
+                            >
+                                <i className="fab fa-linkedin-in"/>
+                            </a>
+                            <a className="btn btn-primary btn-square rounded-circle" href="#">
+                                <i className="fab fa-instagram"/>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                {/* End container */}
             </div>
-            {/* End sticky add to cart */}
-        </div>
+            {/* Topbar End */}
+            {/* Navbar Start */}
+            <nav className="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
+                <a href="index.html" className="navbar-brand d-flex d-lg-none">
+                    <h1 className="m-0 display-4 text-secondary">
+                        <span className="text-white">Farm</span>Fresh
+                    </h1>
+                </a>
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                >
+                    <span className="navbar-toggler-icon"/>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarCollapse">
+                    <div className="navbar-nav mx-auto py-0">
+                        <a href="index.html" className="nav-item nav-link">
+                            Home
+                        </a>
+                        <a href="about.html" className="nav-item nav-link">
+                            About
+                        </a>
+                        <a href="service.html" className="nav-item nav-link">
+                            Service
+                        </a>
+                        <a className= "nav-item nav-link">
+                            <NavLink to="/Product" style={{color: "white"}}>Product</NavLink>
+                        </a>
+                        <div className="nav-item dropdown">
+                            <a
+                                href="#"
+                                className="nav-link dropdown-toggle active"
+                                data-bs-toggle="dropdown"
+                            >
+                                Pages
+                            </a>
+                            <div className="dropdown-menu m-0">
+                                <a href="blog.html" className="dropdown-item">
+                                    Blog Grid
+                                </a>
+                                <a href="detail.html" className="dropdown-item active">
+                                    Blog Detail
+                                </a>
+                                <a href="feature.html" className="dropdown-item">
+                                    Features
+                                </a>
+                                <a href="team.html" className="dropdown-item">
+                                    The Team
+                                </a>
+                                <a href="testimonial.html" className="dropdown-item">
+                                    Testimonial
+                                </a>
+                            </div>
+                        </div>
+                        <a href="contact.html" className="nav-item nav-link">
+                            Contact
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            {/* Navbar End */}
+            {/* Hero Start */}
+            <div className="container-fluid bg-primary py-5 bg-hero mb-5">
+                <div className="container py-5">
+                    <div className="row justify-content-start">
+                        <div className="col-lg-8 text-center text-lg-start">
+                            <h1 className="display-1 text-white mb-md-4">Blog Detail</h1>
+                            <a href="" className="btn btn-primary py-md-3 px-md-5 me-3">
+                                Home
+                            </a>
+                            <a href="" className="btn btn-secondary py-md-3 px-md-5">
+                                Blog Detail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Hero End */}
+            {/* Blog Start */}
+            <div className="container py-5">
+                <div className="row g-5">
+                    <div className="col-lg-8">
+                        {/* Blog Detail Start */}
+                        <div className="mb-5">
+                            <div className="row g-5 mb-5">
+                                <div className="col-md-6">
+
+                                    <img className="img-fluid w-100" src={product.image} alt=""/>
+                                </div>
+                            </div>
+                            <h1 className="mb-4">
+                                {product.productName}
+                            </h1>
+                            <h6>
+                              Số lượng:  {product.inventoryLevel}
+                            </h6>
+                            <h5>
+                                {product.description}
+                            </h5>
+
+                                {/*</div>*/}
+                                {/*</div>*/}
+                        </div>
+                        {/* Blog Detail End */}
+                        {/* Comment List Start */}
+                        <div className="mb-5">
+                            <h2 className="mb-4">3 Comments</h2>
+                            <div className="d-flex mb-4">
+                                <img
+                                    src="data:image/webp;base64,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"
+                                    className="img-fluid"
+                                    style={{width: 45, height: 45}}
+                                />
+                                <div className="ps-3">
+                                    <h6>
+                                        <a href="">John Doe</a>{" "}
+                                        <small>
+                                            <i>01 Jan 2045</i>
+                                        </small>
+                                    </h6>
+                                    <p>
+                                        Diam amet duo labore stet elitr invidunt ea clita ipsum
+                                        voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor
+                                        rebum magna dolores sed eirmod
+                                    </p>
+                                    <button className="btn btn-sm btn-primary">Reply</button>
+                                </div>
+                            </div>
+                            <div className="d-flex mb-4">
+                                <img
+                                    src="data:image/webp;base64,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"
+                                    className="img-fluid"
+                                    style={{width: 45, height: 45}}
+                                />
+                                <div className="ps-3">
+                                    <h6>
+                                        <a href="">John Doe</a>{" "}
+                                        <small>
+                                            <i>01 Jan 2045</i>
+                                        </small>
+                                    </h6>
+                                    <p>
+                                        Diam amet duo labore stet elitr invidunt ea clita ipsum
+                                        voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor
+                                        rebum magna dolores sed eirmod
+                                    </p>
+                                    <button className="btn btn-sm btn-primary">Reply</button>
+                                </div>
+                            </div>
+                            <div className="d-flex ms-5 mb-4">
+                                <img
+                                    src="data:image/webp;base64,UklGRuIKAABXRUJQVlA4INYKAAAwNACdASqWAJYAPt1kqU6opaijK5K8ARAbiWJssDANAgjxWZ4rwaVhAZuJ9CAgXP6H2G6uvBuzo7UZrIO5l6y8OhXs2oz5U+XMygF7dBFfaVAo+A2SYb08f5GHHvR5AmnwcS9vpRPwObnVrtOzyLcyCFCad4H7lB0m7YYVSQByX8kzA6Kj0ZuDZ8Z53gajfOkFfXblnjj6hFpVy3M7Kx5xEeiGPupMzgBFh8WABmjkbjwYyPZ+aq7nvOFYOIlDdTMdw27Oc6wuLqjTjuOO3Dvu72P8JdKGVUeI38JCMik8nq2/roqgdz2vmJdmSzVsx5whgKA5M418KBHwxeUyPoIJ4TgmM0Y0XfskRF1f3xAcC6wkdmcHxLtQiFbkEg0RcLHsVqQAblu+3mykcgzRncM6ADj31hPqpRKx4a6oSUMmCDt/+5hecWblzotNzfSZpvw3suksSgaKaoO6D9d9LWMrdwF/7LlG6gu3H4IPEf3C4UG4CTMsYgmr67OjsZhOYJalmdCOtq7O96gUrhcr3ZmFdXztUz+Qele+RjIYoC/3wgbt1zRwYmQHNRAA/uyefvkWlw4VxNFRnavHKkqK7mv4b/wIR2Wi/9atkeS3Y8kNqBpK88PPtf4fQJIRSVBC4jFJDRFQg67546Pw6slmLFLSj2dmbMsTkBIswAU8v9jx3qKzT+wqck/DPEKVh0AntopoijMLk8ROVNini3Y1xXNwic/tylVRVTQYFR2xrG18CKDb7lD7+8SqTz881fBsnkf/kUmljpmo9clWo2jwBB9BIceqF35Tc1hEiLYXagKbpYkcFbiPcXeFg+7vjH4PuoSNYk9lwFAtpCcvlubNKMs39WvGvem6oT5yd7ElXOBIDYYIqYuj1El21qxls94OzlaVjGI6vXEYg3EoK+RbhH5lnB+UjulgldIbypNMIfSUzdoFAcDJfonl1pzjxaYcE0NH1jH53CL+JE0TrbUpBHgrFSmNtvyZTL3zzcr6yWHoDQalrKmgUX6MT5LzGK8S8QoRPjXZPAFreGRWcjoCPupmi7NNLdCewHmMkDIigwrj2iuf89DW+21qMHPYuWAJqAUsIhR2m432r4kH4t3iKGgCEY39AFdUwl0XNCiUf4mEWYWemlNLrhh5XduzbUgXIBW7ggl/u0GOMATO0r5vnCe+f6rme9f0/wwS/Ou5A5B/qOceVMGqMRLZRHl9PSd8/B3whM56b0Fd9l0LqqdT6A1qeWYcLJJA00BWZ44PD9uwFD1dSIrfbefeUeAShsipLDdnczHvNJe5sRzZTAT48mIM10CvDC2vNKJksQ1S8GLSwzXUp0g983Gmaj6cT3NTTb9ZYptEY1cE5qCk2Xk+BuJNt7YIFBw8DiOtLInFm3zrXGZO4uOpbgd07B6DoD+sqKe82K9rnqE70jOnpZFHveDblQwZOi9Sj9LmOUowy8haRLT297dkVJN13JLljYBj6/Ch9cW1KAOVf+TlEALVZ8BYJdYv3Buwjx6SeG6cRc4QlxazYXhZsfA81UyD/lGlG4kgcnRG7FxRAqtLb4TywLWfB3tDciaHqhOYVoPNMxnTMG+y7jD8dVNlM6YrQwQoAbfQ5w0MBKVriRiIIRGbbuYEwweDuda1VX4qfLI+dMe2R/R80soN1tRcsVxeTq6iTOpqY3vyoyU6TICE4T8QVixjPjuxMRhvijYk0Z3Li9hoQioUPnzkjWKxaWyoNG0n2I9hi7cxusUNhFpq2pQDZ8PfIDj2FMd97uz/ywuSMgCKJUdm1xFgUiCPBl2rzq11KKheRqeU7lTgX5CDYGC6BaqZ7lO0ZUBlOxCBdvYywTY7so3fctQAKdwFvORttYc7DG9AXsDdR3efcTwIlYQjHr9SAHyWITpOZM7UVV0eeK7vKtE4mumS6Q3YNBz6kS71H3iyI8S/Ouu+F9Hr0GdxFBS8Q2d9ni5zX5ZQ1TFZd3EBXAh3KQ6mpwef4usYKNyt6auLnkfiCWg3x2J7XX/Kf4k8fOtNqaRD2sjLK6vv/1U25zvLnfwfVGeAsE20DMxv1fIRKSZoBbhO+i3njWp4d0LBssxhEuabC5mDB/x9M8C6JIkHiflk1dmV6c3fZoH0lOOKczUOCf8cTjjF6kuSPSHk31LsSO9oU5TSWvVsXEymUW72d2P0sXOQLC004cztxQna05Fw4Pg/vrIvcq+F7ykO6To3hqT+2gBj50v5NXEe0Xb8KAb7XwU9GIVVbgcZljk70vcLNQ24jSCoOUBb4IZPEP7IFW/v9hfSByvolgNX1c/XSynP0sCqZVUEt4hbXPaCu7MNJ+6RlSv3akdcJOr2CdQjJ3uubplEX2pnBOo70uVthr/LX+zz19XEV2yMuP0mpp7ru8m4EED4eVJ82qv8NBdk+cyvtkKYAIQLfvHj9eJRGdy4hbJaAigdQXzZXgPWnV5HlsF2x0yYstzBJTEyx8INr2ASzA7UgjNTWg81uERjEfr9oRi9sydUGFV0dyaCQj0Q0j4HQNYW5UghgBUdN9eh6tZinU38jJJTlkx4dHE5G5JMH3D5PDTxy6jbwfF7bZxq53Yiot9EYP+Kg9R/k9QiB1SCsKj6M0+WBa564XqembAJ6Je69wFcZZ4ZsFHsm551bhCyqHhOFK5+BDmNoKNtuhrlNze1OfJ3ZMkLUUDjdmlpijHu/qaX78+hdNwu42+1fT4VCJhBRwhoUKtgVFN+3wQ84Xkl4rsS85oRBxqf3ayC1XbRUc3sOCmztwF1U/o55fP7hMFsloYYnk5bbXk8J5jcVK4/v65+EnyUqsr1IlpuKj1OW9wI2g+SAwMoftbA5w/QckvGL+e4Y9ELBdCPgBnKW3CzfJxUVvLM/vBU4caI+9Y267QYui4zQLhKYc4Qadj/vNakUAsyX4Q5gVtCgXNQWdXZrVfOnwnQ/LqlBjXOsNpZpPI+uA8XZMiHxlwRhB4NTB6bjLBBxGtCzQv8Da6sMzeISuiB3wwuoCMtdaGwU6mY83XSvt43xJ6U3Jx/V3+gD8USE+Cfng/Trrty11U0SMKYlDoQQeE2Ww4PpKT3e7LkP0JE5Lfno2n6pyUj4QBDghPP+OYDXmqDVd+c2RRRtZ1xL3xVnsJ0gt+v4KmzQH6HoP8frrMw2qK2I8hmQF/qOfuvEIJGhffixaSNCpOVd+Q9Fs5td1XLy3xEDYzYY/YYy8xXZDIW0Am8w6rgRXo7CzsUC0ssSjQp2Xo4nDtuIedljvFyaDzx0hdLD3IZag7rAH7wcAdptCdyBP4StpDUH6l7h4+u17FfSjK1ihDdz+xehx2q+/arXpzDtj+Ywg7DTCEnJH6oI6sZ+8m2kDu9BXbYY2+XB/A4jfURLwtrW2zfoiHOs5H/3gi6e48JBQ+LRRB/rVRtqkOwj8PM/o7d//4DGP7gtuA82/3+O/gKWOFRlroYftWcNhhaqOpvOUEkyq1x4fYhKtVgOveoi1CEqAF4lKYHtr4VvoLKrcdjSjZFVPRJd1r+J8ud3kQx8X67d7AlifJv56sjaG/hhf+tG+chQ5qPZBKflPG220Jc1gPj06Xf5PkXDR4gwvgLqk628a/0A3endDuWrIavCIILtldlNqI7wDJAnkavtYjdjdjBnfuWFnTmxJw7NjxXlCtllfdUcq4VLjI0rkhCKSO2GVtAG4U+d7nAPFmIMIek5yGX+uhNRcVwFVUSsgywAA=="
+                                    className="img-fluid"
+                                    style={{width: 45, height: 45}}
+                                />
+                                <div className="ps-3">
+                                    <h6>
+                                        <a href="">John Doe</a>{" "}
+                                        <small>
+                                            <i>01 Jan 2045</i>
+                                        </small>
+                                    </h6>
+                                    <p>
+                                        Diam amet duo labore stet elitr invidunt ea clita ipsum
+                                        voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor
+                                        rebum magna dolores sed eirmod
+                                    </p>
+                                    <button className="btn btn-sm btn-primary">Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Comment List End */}
+                        {/* Comment Form Start */}
+                        <div className="bg-primary p-5">
+                            <h2 className="text-white mb-4">Leave a comment</h2>
+                            <form>
+                                <div className="row g-3">
+                                    <div className="col-12 col-sm-6">
+                                        <input
+                                            type="text"
+                                            className="form-control bg-white border-0"
+                                            placeholder="Your Name"
+                                            style={{height: 55}}
+                                        />
+                                    </div>
+                                    <div className="col-12 col-sm-6">
+                                        <input
+                                            type="email"
+                                            className="form-control bg-white border-0"
+                                            placeholder="Your Email"
+                                            style={{height: 55}}
+                                        />
+                                    </div>
+                                    <div className="col-12">
+                                        <input
+                                            type="text"
+                                            className="form-control bg-white border-0"
+                                            placeholder="Website"
+                                            style={{height: 55}}
+                                        />
+                                    </div>
+                                    <div className="col-12">
+                <textarea
+                    className="form-control bg-white border-0"
+                    rows={5}
+                    placeholder="Comment"
+                    defaultValue={""}
+                />
+                                    </div>
+                                    <div className="col-12">
+                                        <button className="btn btn-secondary w-100 py-3" type="submit">
+                                            Leave Your Comment
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        {/* Comment Form End */}
+                    </div>
+                    {/* Sidebar Start */}
+                    <div className="col-lg-4">
+                        {/* Search Form Start */}
+                        <div className="mb-5">
+                            <div className="input-group">
+                                <input
+                                    type="text"
+                                    className="form-control p-3"
+                                    placeholder="Keyword"
+                                />
+                                <button className="btn btn-primary px-4">
+                                    <i className="bi bi-search"/>
+                                </button>
+                            </div>
+                        </div>
+                        {/* Search Form End */}
+                        {/* Category Start */}
+                        <div className="mb-5">
+                            <h2 className="mb-4">Categories</h2>
+                            <div className="d-flex flex-column justify-content-start bg-primary p-4">
+                                <a className="fs-5 fw-bold text-white mb-2" href="#">
+                                    <i className="bi bi-arrow-right me-2"/>
+                                    Web Design
+                                </a>
+                                <a className="fs-5 fw-bold text-white mb-2" href="#">
+                                    <i className="bi bi-arrow-right me-2"/>
+                                    Web Development
+                                </a>
+                                <a className="fs-5 fw-bold text-white mb-2" href="#">
+                                    <i className="bi bi-arrow-right me-2"/>
+                                    Web Development
+                                </a>
+                                <a className="fs-5 fw-bold text-white mb-2" href="#">
+                                    <i className="bi bi-arrow-right me-2"/>
+                                    Keyword Research
+                                </a>
+                                <a className="fs-5 fw-bold text-white" href="#">
+                                    <i className="bi bi-arrow-right me-2"/>
+                                    Email Marketing
+                                </a>
+                            </div>
+                        </div>
+                        {/* Category End */}
+                        {/* Recent Post Start */}
+                        <div className="mb-5">
+                            <h2 className="mb-4">Recent Post</h2>
+                            <div className="bg-primary p-4">
+                                <div className="d-flex overflow-hidden mb-3">
+                                    <img
+                                        className="img-fluid flex-shrink-0"
+                                        src="data:image/webp;base64,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"
+                                        style={{width: 75}}
+                                        alt=""
+                                    />
+                                    <a
+                                        href=""
+                                        className="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0"
+                                    >
+                                        Lorem ipsum dolor sit amet elit
+                                    </a>
+                                </div>
+                                <div className="d-flex overflow-hidden mb-3">
+                                    <img
+                                        className="img-fluid flex-shrink-0"
+                                        src="img/blog-2.jpg"
+                                        style={{width: 75}}
+                                        alt=""
+                                    />
+                                    <a
+                                        href=""
+                                        className="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0"
+                                    >
+                                        Lorem ipsum dolor sit amet elit
+                                    </a>
+                                </div>
+                                <div className="d-flex overflow-hidden mb-3">
+                                    <img
+                                        className="img-fluid flex-shrink-0"
+                                        src="img/blog-3.jpg"
+                                        style={{width: 75}}
+                                        alt=""
+                                    />
+                                    <a
+                                        href=""
+                                        className="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0"
+                                    >
+                                        Lorem ipsum dolor sit amet elit
+                                    </a>
+                                </div>
+                                <div className="d-flex overflow-hidden mb-3">
+                                    <img
+                                        className="img-fluid flex-shrink-0"
+                                        src="img/blog-1.jpg"
+                                        style={{width: 75}}
+                                        alt=""
+                                    />
+                                    <a
+                                        href=""
+                                        className="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0"
+                                    >
+                                        Lorem ipsum dolor sit amet elit
+                                    </a>
+                                </div>
+                                <div className="d-flex overflow-hidden">
+                                    <img
+                                        className="img-fluid flex-shrink-0"
+                                        src="img/blog-2.jpg"
+                                        style={{width: 75}}
+                                        alt=""
+                                    />
+                                    <a
+                                        href=""
+                                        className="d-flex align-items-center bg-white text-dark fs-5 fw-bold px-3 mb-0"
+                                    >
+                                        Lorem ipsum dolor sit amet elit
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Recent Post End */}
+                        {/* Image Start */}
+                        <div className="mb-5">
+                            <img src="img/blog-1.jpg" alt="" className="img-fluid rounded"/>
+                        </div>
+                        {/* Image End */}
+                        {/* Tags Start */}
+                        <div className="mb-5">
+                            <h2 className="mb-4">Tag Cloud</h2>
+                            <div className="d-flex flex-wrap m-n1">
+                                <a href="" className="btn btn-primary m-1">
+                                    Design
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    Development
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    Marketing
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    SEO
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    Writing
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    Consulting
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    Design
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    Development
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    Marketing
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    SEO
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    Writing
+                                </a>
+                                <a href="" className="btn btn-primary m-1">
+                                    Consulting
+                                </a>
+                            </div>
+                        </div>
+                        {/* Tags End */}
+                        {/* Plain Text Start */}
+                        <div>
+                            <h2 className="mb-4">Plain Text</h2>
+                            <div
+                                className="bg-primary text-center text-white"
+                                style={{padding: 30}}
+                            >
+                                <p>
+                                    Vero sea et accusam justo dolor accusam lorem consetetur, dolores
+                                    sit amet sit dolor clita kasd justo, diam accusam no sea ut tempor
+                                    magna takimata, amet sit et diam dolor ipsum amet diam
+                                </p>
+                                <a href="" className="btn btn-secondary py-2 px-4">
+                                    Read More
+                                </a>
+                            </div>
+                        </div>
+                        {/* Plain Text End */}
+                    </div>
+                    {/* Sidebar End */}
+                </div>
+            </div>
+            {/* Blog End */}
+            {/* Footer Start */}
+            <div className="container-fluid bg-footer bg-primary text-white mt-5">
+                <div className="container">
+                    <div className="row gx-5">
+                        <div className="col-lg-8 col-md-6">
+                            <div className="row gx-5">
+                                <div className="col-lg-4 col-md-12 pt-5 mb-5">
+                                    <h4 className="text-white mb-4">Get In Touch</h4>
+                                    <div className="d-flex mb-2">
+                                        <i className="bi bi-geo-alt text-white me-2"/>
+                                        <p className="text-white mb-0">123 Street, New York, USA</p>
+                                    </div>
+                                    <div className="d-flex mb-2">
+                                        <i className="bi bi-envelope-open text-white me-2"/>
+                                        <p className="text-white mb-0">info@example.com</p>
+                                    </div>
+                                    <div className="d-flex mb-2">
+                                        <i className="bi bi-telephone text-white me-2"/>
+                                        <p className="text-white mb-0">+012 345 67890</p>
+                                    </div>
+                                    <div className="d-flex mt-4">
+                                        <a
+                                            className="btn btn-secondary btn-square rounded-circle me-2"
+                                            href="#"
+                                        >
+                                            <i className="fab fa-twitter"/>
+                                        </a>
+                                        <a
+                                            className="btn btn-secondary btn-square rounded-circle me-2"
+                                            href="#"
+                                        >
+                                            <i className="fab fa-facebook-f"/>
+                                        </a>
+                                        <a
+                                            className="btn btn-secondary btn-square rounded-circle me-2"
+                                            href="#"
+                                        >
+                                            <i className="fab fa-linkedin-in"/>
+                                        </a>
+                                        <a
+                                            className="btn btn-secondary btn-square rounded-circle"
+                                            href="#"
+                                        >
+                                            <i className="fab fa-instagram"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                                    <h4 className="text-white mb-4">Quick Links</h4>
+                                    <div className="d-flex flex-column justify-content-start">
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Home
+                                        </a>
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            About Us
+                                        </a>
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Our Services
+                                        </a>
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Meet The Team
+                                        </a>
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Latest Blog
+                                        </a>
+                                        <a className="text-white" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Contact Us
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+                                    <h4 className="text-white mb-4">Popular Links</h4>
+                                    <div className="d-flex flex-column justify-content-start">
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Home
+                                        </a>
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            About Us
+                                        </a>
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Our Services
+                                        </a>
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Meet The Team
+                                        </a>
+                                        <a className="text-white mb-2" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Latest Blog
+                                        </a>
+                                        <a className="text-white" href="#">
+                                            <i className="bi bi-arrow-right text-white me-2"/>
+                                            Contact Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 mt-lg-n5">
+                            <div
+                                className="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-secondary p-5">
+                                <h4 className="text-white">Newsletter</h4>
+                                <h6 className="text-white">Subscribe Our Newsletter</h6>
+                                <p>Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
+                                <form action="">
+                                    <div className="input-group">
+                                        <input
+                                            type="text"
+                                            className="form-control border-white p-3"
+                                            placeholder="Your Email"
+                                        />
+                                        <button className="btn btn-primary">Sign Up</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="container-fluid bg-dark text-white py-4">
+                <div className="container text-center">
+                    <p className="mb-0">
+                        ©{" "}
+                        <a className="text-secondary fw-bold" href="#">
+                            Your Site Name
+                        </a>
+                        . All Rights Reserved. Designed by{" "}
+                        <a className="text-secondary fw-bold" href="https://htmlcodex.com">
+                            HTML Codex
+                        </a>
+                    </p>
+                    <br/>
+                    Distributed By:{" "}
+                    <a
+                        className="text-secondary fw-bold"
+                        href="https://themewagon.com"
+                        target="_blank"
+                    >
+                        ThemeWagon
+                    </a>
+                </div>
+            </div>
+            {/* Footer End */}
+
+
+        </>
     );
 };
 

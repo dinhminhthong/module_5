@@ -5,6 +5,10 @@ import {postLogin} from "../../service/LoginService";
 import * as Yup from "yup";
 function Login() {
     const navigate = useNavigate();
+    let data = sessionStorage.getItem("TOKEN");
+    if(data) {
+        navigate('/product');
+    }
     return (
         <>
 
