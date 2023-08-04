@@ -6,7 +6,7 @@ import ProductList from "./component/product/ProductList";
 import ProductDetail from "./component/product/ProductDetail";
 import Cart from "./component/cart/Cart";
 import Test from "./component/cart/Test";
-import { CartProvider } from "../src/context/CartContext";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
     return (

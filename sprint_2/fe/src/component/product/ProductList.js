@@ -1,13 +1,13 @@
 import {NavLink} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import {findAll} from "../../service/ProductService";
+import {findAll, searchName} from "../../service/ProductService";
 import Navbar from "../home/Navbar";
 import {CartContext, CartProvider} from "../../context/CartContext"
+import {Formik,Form,Field} from "formik";
 
 function ProductList() {
     const [product, setProduct] = useState([]);
     const [cart, setCart] = useState([]);
-
     const [itemsToShow, setItemsToShow] = useState(3); // Số sản phẩm hiển thị ban đầu
     const [itemsPerLoad, setItemsPerLoad] = useState(3);// số sản phẩm bạn muốn hiển thị sau khi bấm load more
     useEffect(() => {
@@ -285,6 +285,20 @@ function ProductList() {
                     <h6 className="text-primary text-uppercase">Products</h6>
                     <h1 className="display-5">Our Fresh &amp; Organic Products</h1>
                 </div>
+                <Formik initialValues={{name:""}}
+                        onSubmit={(value)=>{
+                            const search = async()=>{
+                                let rs = await searchName(value.name);
+                                setProduct(rs);
+                            }
+                            search()
+                        }}>
+                    <Form>
+                        <label htmlFor="">Tìm kiếm</label>
+                        <Field type="input" name="name"/>
+                        <button type="submit" className="btn btn-primary btn-sm">Tìm kiếm</button>
+                    </Form>
+                </Formik>
                 <div className="row">
                     {
                         product?.slice(0, itemsToShow)?.map((value, index) => (

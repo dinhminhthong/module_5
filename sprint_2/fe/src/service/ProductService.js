@@ -16,3 +16,7 @@ export const detail = async (productId)=>{
         console.log(e)
     }
 }
+export const searchName = async (nameSearch)=>{
+    let rs = await axios.get(`http://localhost:8080/api/product?nameSearch=${nameSearch}`)
+    return rs.data
+}
