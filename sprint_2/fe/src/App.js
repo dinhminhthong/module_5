@@ -7,10 +7,13 @@ import ProductDetail from "./component/product/ProductDetail";
 import Cart from "./component/cart/Cart";
 import Test from "./component/cart/Test";
 import { CartProvider } from "./context/CartContext";
+import Hearder from "./component/home/Hearder";
+import Navbar from "./component/home/Navbar";
 
 function App() {
     return (
-        <CartProvider>
+        <>
+            <Navbar/>
             <Routes>
                 <Route path='/login' element={<Login/>}/>
                 <Route path='/' element={<Home/>}/>
@@ -19,7 +22,7 @@ function App() {
                 <Route path='/cart' element={<Cart/>}/>
                 <Route path='/test' element={<Test/>}/>
             </Routes>
-        </CartProvider>
+        </>
     );
 }
 

@@ -1,106 +1,241 @@
-import {NavLink} from "react-router-dom";
-import {CartContext} from  "../../context/CartContext"
+import {Link, NavLink} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
+import * as UserService from "../../service/userService";
 
-const Navbar  = () => {
-    // const username = localStorage.getItem("username");
-    // const account = JSON.parse(localStorage.getItem("account"));
-    // const {iconQuantity, setIconQuantity} = useContext(ValueIconCartContext)
-    // const roles = [];
-    // if (account != null) {
-    //     for (let i = 0; i < account.roles.length; i++) {
-    //         roles.push(account.roles[i].authority);
-    //     }
-    // }
-    // const handleLogout = () => {
-    //     localStorage.clear();
-    //     window.location.href = "/";
-    // };
+
+const Navbar = () => {
+    const [userId, setUserId] = useState(0);
+    const username = sessionStorage.getItem('USERNAME');
+
+    // const { iconQuantity, setIconQuantity } = useContext(QuantityContext)
+    useEffect(() => {
+        const getUserName = async () => {
+            const rs = await UserService.findUserName(username);
+            console.log(rs);
+            setUserId(rs)
+        }
+        getUserName();
+    }, []);
+    const logout = () => {
+        sessionStorage.removeItem("TOKEN");
+        sessionStorage.removeItem("USERNAME");
+        sessionStorage.removeItem("roles");
+        window.location.href = '/';
+    };
+
+
     return (
-        <nav className="navbar navbar-expand-lg bg-primary navbar-dark shadow-sm py-3 py-lg-0 px-3 px-lg-5">
-            <a href="home.html" className="navbar-brand d-flex d-lg-none">
-                <h1 className="m-0 display-4 text-secondary">
-                    <span className="text-white">Farm</span>Fresh
-                </h1>
-            </a>npm
-            <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarCollapse"
-            >
-                <span className="navbar-toggler-icon"/>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarCollapse">
-                <div className="navbar-nav mx-auto py-0">
-                    <a href="home.html" className="nav-item nav-link active">
-                        Home
-                    </a>
+        <>
 
-                    <a className= "nav-item nav-link">
-                        <NavLink to="/login" style={{color: "white"}}>Login</NavLink>
-                    </a>
-                    <a href="service.html" className="nav-item nav-link">
-                        Service
-                    </a>
-                    {/*<a href="product.html" className="nav-item nav-link">*/}
-                    {/*    Product*/}
-                    {/*</a>*/}
-                    <div className="nav-item dropdown">
-                        <a
-                            href="#"
-                            className="nav-link dropdown-toggle"
-                            data-bs-toggle="dropdown"
-                        >
-                            Pages
-                        </a>
-                        <div className="dropdown-menu m-0">
-                            <a href="blog.html" className="dropdown-item">
-                                Blog Grid
+            {sessionStorage.getItem("USERNAME") === "nghia123" && (
+                <>
+                    <nav
+                        className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+                        id="ftco-navbar" style={{height: "10%"}}
+                    >
+                        <div className="container" style={{marginTop: -13, marginRight: "22%"}}>
+                            <a className="navbar-brand" href="/">
+                               CowFarm
                             </a>
-                            <a href="detail.html" className="dropdown-item">
-                                Blog Detail
-                            </a>
-                            <a href="feature.html" className="dropdown-item">
-                                Features
-                            </a>
-                            <a href="team.html" className="dropdown-item">
-                                The Team
-                            </a>
-                            <a href="testimonial.html" className="dropdown-item">
-                                Testimonial
-                            </a>
+                            <button
+                                className="navbar-toggler"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#ftco-nav"
+                                aria-controls="ftco-nav"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation"
+                            >
+                                <span className="oi oi-menu"/> Menu
+                            </button>
+                            <div className="collapse navbar-collapse" id="ftco-nav"
+                                 style={{marginLeft: "38%", marginRight: "-29%"}}>
+                                <ul className="navbar-nav ml-auto">
+                                    <li className="nav-item active">
+                                        <a href="/" className="nav-link">
+                                            Home
+                                        </a>
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <a
+                                            className="nav-link "
+                                            href="/shop"
+                                        >
+                                            Shop
+                                        </a>
+
+                                    </li>
+
+                                    <li className="nav-item active">
+                                        <a href="/employee" className="nav-link">
+                                            Employee
+                                        </a>
+                                    </li>
+                                    <NavLink to={`/cart/${username}`}>
+                                        <li className="nav-item cta cta-colored">
+
+                                            {/*<a className="nav-link">*/}
+                                            {/*    <span className="icon-shopping_cart"/>*/}
+                                            {/*    [{iconQuantity}]*/}
+                                            {/*</a>*/}
+
+
+                                        </li>
+                                    </NavLink>
+
+
+                                    <li className="nav-item">
+                                        <a className="nav-link"
+                                           style={{color: "red"}}>{sessionStorage.getItem("USERNAME")}</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" style={{color: "red"}} onClick={() => logout()}>Log
+                                            out</Link>
+                                    </li>
+
+
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <a href="contact.html" className="nav-item nav-link">
-                        Contact
-                    </a>
-                    <a>
-                        <NavLink to='/test'>
-                            <CartContext.Consumer>
-                                { ({cartItems}) => {
-                                    if(cartItems) {
-                                        cartItems.map((i)=> {
-                                            console.log(i.productName);
-                                        })
-                                    }
-                                    console.log(cartItems)
-                                    return ( <div className="nav-item nav-link">
-                                        Cart ({cartItems.length})
 
-                                    </div>)
-                                }
-                                }
-                            </CartContext.Consumer>
-                        </NavLink>
-                    </a>
-                </div>
-            </div>
-            <div><a className="nav-item nav-link" style={{color:"white",fontSize:20}}>
-                   {sessionStorage.getItem("USERNAME")}
-            </a></div>
-        </nav>
-    )
+                    </nav>
+
+                </>
+            )
+            }
+
+            {
+                sessionStorage.getItem("roles") === "USER" && (
+                    <>
+
+                        <nav
+                            className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+                            id="ftco-navbar" style={{height: "10%"}}
+                        >
+                            <div className="container" style={{marginTop: -13, marginRight: "22%"}}>
+                                <a className="navbar-brand" href="/">
+                               CowFarm
+                                </a>
+                                <button
+                                    className="navbar-toggler"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#ftco-nav"
+                                    aria-controls="ftco-nav"
+                                    aria-expanded="false"
+                                    aria-label="Toggle navigation"
+                                >
+                                    <span className="oi oi-menu"/> Menu
+                                </button>
+                                <div className="collapse navbar-collapse" id="ftco-nav"
+                                     style={{marginLeft: "38%", marginRight: "-29%"}}>
+                                    <ul className="navbar-nav ml-auto">
+                                        <li className="nav-item active">
+                                            <a href="/" className="nav-link">
+                                                Home
+                                            </a>
+                                        </li>
+                                        <li className="nav-item dropdown">
+                                            <a
+                                                className="nav-link "
+                                                href="/shop"
+                                            >
+                                                Shop
+                                            </a>
+
+                                        </li>
+
+
+                                        <NavLink to={`/cart/${username}`}>
+                                            <li className="nav-item cta cta-colored">
+
+                                                {/*<a className="nav-link">*/}
+                                                {/*    <span className="icon-shopping_cart"/>*/}
+                                                {/*    [{iconQuantity}]*/}
+                                                {/*</a>*/}
+
+
+                                            </li>
+                                        </NavLink>
+
+                                        <li className="nav-item">
+                                            <a className="nav-link"
+                                               style={{color: "red"}}>{sessionStorage.getItem("USERNAME")}</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link className="nav-link" style={{color: "red"}} onClick={() => logout()}>Log
+                                                out</Link>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </nav>
+
+                    </>
+                )
+            }
+            {
+                !sessionStorage.getItem("TOKEN") && (
+                    <>
+                        <nav
+                            className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+                            id="ftco-navbar" style={{height: "10%"}}
+                        >
+                            <div className="container" style={{marginTop: -13, marginRight: "22%"}}>
+                                <a className="navbar-brand" href="/">
+                                    HypeSneaker
+                                </a>
+                                <button
+                                    className="navbar-toggler"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#ftco-nav"
+                                    aria-controls="ftco-nav"
+                                    aria-expanded="false"
+                                    aria-label="Toggle navigation"
+                                >
+                                    <span className="oi oi-menu"/> Menu
+                                </button>
+                                <div className="collapse navbar-collapse" id="ftco-nav"
+                                     style={{marginLeft: "38%", marginRight: "-29%"}}>
+                                    <ul className="navbar-nav ml-auto">
+                                        <li className="nav-item active">
+                                            <a href="/" className="nav-link">
+                                                Home
+                                            </a>
+                                        </li>
+                                        <li className="nav-item dropdown">
+                                            <a
+                                                className="nav-link "
+                                                href="/shop"
+                                            >
+                                                Shop
+                                            </a>
+
+                                        </li>
+
+
+                                        <li style={{width: 84}} className="nav-item">
+                                            <a style={{marginTop: "-4%"}} href="/login" className="nav-link">
+                                                <img style={{width: 25}}
+                                                     src="https://o.remove.bg/downloads/b3a8cfa0-1b4d-4c26-bc4e-07adb1c203a6/avatar-removebg-preview.png"></img>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </nav>
+                    </>
+                )
+            }
+
+        </>
+    );
 }
 
 export default Navbar;

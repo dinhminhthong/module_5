@@ -1,12 +1,20 @@
 import React from "react";
+import Navbar from "../home/Navbar";
+import Hearder from "../home/Hearder";
+
 
 const Cart = () => {
     return (
+<>
+    <Hearder/>
+    <Navbar/>
         <div className="shopping-cart">
+
             {/* Container */}
             <div className="container container--type-2">
                 {/* Second container */}
                 <div className="container">
+
                     {/* Title */}
                     <h1 className="shopping-cart__title">CowFarm Cart</h1>
                     {/* End title */}
@@ -40,7 +48,7 @@ const Cart = () => {
                                                                 alt="Image"
                                                                 data-sizes="auto"
                                                                 data-srcset="http://demo2.ninethemes.net/durotan20/html/assets/products/1/10a.jpg 800w"
-                                                                src="https://tse3.mm.bing.net/th?id=OIP.lANdFxxSh5ZjA9wnWhKj6QHaE7&pid=Api&P=0&h=180"
+                                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvYR2AqibiV8yutD1E1ekNBgHMz-9Llawtgl-E3TtFJ6Mj_Mxm"
                                                                 className="lazyload"
                                                             />
                                                         </a>
@@ -48,7 +56,7 @@ const Cart = () => {
                                                     <div className="cart-product__title-and-variant">
                                                         <h3 className="cart-product__title">
                                                             <a href="product.html">
-                                                                Slim fit modal cotton shirt
+                                                                fresh fruit
                                                             </a>
                                                         </h3>
                                                         <div className="cart-product__variant">
@@ -61,7 +69,7 @@ const Cart = () => {
                                                 </div>
                                             </td>
                                             <td>
-                                                <div className="cart-product__price">$56.99</div>
+                                                <div className="cart-product__price">$700</div>
                                             </td>
                                             <td>
                                                 <div className="cart-product__quantity-field">
@@ -70,7 +78,7 @@ const Cart = () => {
                                                     </div>
                                                     <input
                                                         type="text"
-                                                        defaultValue={2}
+                                                        defaultValue={1}
                                                         className="quantity-field__input"
                                                     />
                                                     <div className="quantity-field__plus">
@@ -79,7 +87,7 @@ const Cart = () => {
                                                 </div>
                                             </td>
                                             <td>
-                                                <div className="cart-product__price">$113.98</div>
+                                                <div className="cart-product__price">$700</div>
                                             </td>
                                             <td>
                                                 <div className="cart-product__delete">
@@ -100,17 +108,16 @@ const Cart = () => {
                                                                 alt="Image"
                                                                 data-sizes="auto"
                                                                 data-srcset="http://demo2.ninethemes.net/durotan20/html/assets/products/1/11a.jpg 800w"
-                                                                src="https://tse1.mm.bing.net/th?id=OIP.9OGEAY-E-NeuW-n7mf5DJgHaEo&pid=Api&P=0&h=180"
+                                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvYR2AqibiV8yutD1E1ekNBgHMz-9Llawtgl-E3TtFJ6Mj_Mxm"
                                                                 className="lazyload"
                                                             />
                                                         </a>
                                                     </div>
                                                     <div className="cart-product__title-and-variant">
                                                         <h3 className="cart-product__title">
-                                                            <a href="product.html">Suede sport shoes</a>
+                                                            <a href="product.html">fresh vegetable</a>
                                                         </h3>
                                                         <div className="cart-product__variant">
-                                                            Bold Brown, 40
                                                         </div>
                                                         <div className="cart-product__action">
                                                             <a href="#">Edit</a>
@@ -119,7 +126,7 @@ const Cart = () => {
                                                 </div>
                                             </td>
                                             <td>
-                                                <div className="cart-product__price">$45.5</div>
+                                                <div className="cart-product__price">$700</div>
                                             </td>
                                             <td>
                                                 <div className="cart-product__quantity-field">
@@ -137,7 +144,7 @@ const Cart = () => {
                                                 </div>
                                             </td>
                                             <td>
-                                                <div className="cart-product__price">$45.5</div>
+                                                <div className="cart-product__price">$700</div>
                                             </td>
                                             <td>
                                                 <div className="cart-product__delete">
@@ -158,7 +165,7 @@ const Cart = () => {
                                                                 alt="Image"
                                                                 data-sizes="auto"
                                                                 data-srcset="http://demo2.ninethemes.net/durotan20/html/assets/products/1/12a.jpg 800w"
-                                                                src="https://tse3.mm.bing.net/th?id=OIP.woCdR52wxbpRUF1pckjz6AHaHa&pid=Api&P=0&h=180"
+                                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvYR2AqibiV8yutD1E1ekNBgHMz-9Llawtgl-E3TtFJ6Mj_Mxm"
                                                                 className="lazyload"
                                                             />
                                                         </a>
@@ -166,7 +173,7 @@ const Cart = () => {
                                                     <div className="cart-product__title-and-variant">
                                                         <h3 className="cart-product__title">
                                                             <a href="product.html">
-                                                                Pebbled crossbody belt bag
+                                                                clean fruit
                                                             </a>
                                                         </h3>
                                                         <div className="cart-product__action">
@@ -176,7 +183,7 @@ const Cart = () => {
                                                 </div>
                                             </td>
                                             <td>
-                                                <div className="cart-product__price">$72.99</div>
+                                                <div className="cart-product__price">$700</div>
                                             </td>
                                             <td>
                                                 <div className="cart-product__quantity-field">
@@ -194,7 +201,7 @@ const Cart = () => {
                                                 </div>
                                             </td>
                                             <td>
-                                                <div className="cart-product__price">$72.99</div>
+                                                <div className="cart-product__price">$700</div>
                                             </td>
                                             <td>
                                                 <div className="cart-product__delete">
@@ -268,6 +275,7 @@ const Cart = () => {
             </div>
             {/* End container */}
         </div>
+    </>
     );
 };
 

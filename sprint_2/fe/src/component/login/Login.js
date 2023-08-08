@@ -1,16 +1,20 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router";
 import {Formik, Form, Field, ErrorMessage} from "formik";
-import {postLogin} from "../../service/LoginService";
+import {postLogin} from "../../service/Service";
 import * as Yup from "yup";
 function Login() {
     const navigate = useNavigate();
+    const [failedAccount, setFailedAccount] = useState(null);
+
     let data = sessionStorage.getItem("TOKEN");
     if(data) {
         navigate('/product');
     }
+
     return (
         <>
+
 
             <style
                 dangerouslySetInnerHTML={{
@@ -39,15 +43,21 @@ function Login() {
                                                         username: Yup.string().required("phải điền username để đăng nhập"),
                                                         password:Yup.string().required("không được bỏ trống")
                                                     })}
-                                                    onSubmit={(value) => {
-                                                        const login = async () => {
-                                                            const data = await postLogin(value);
-                                                            console.log(value);
-                                                            sessionStorage.setItem('TOKEN', data.accessToken);
-                                                            sessionStorage.setItem('USERNAME', data.username)
-                                                            navigate('/product');
-                                                        }
-                                                        login()
+                                                    onSubmit={(values) => {
+                                                        postLogin(values)
+                                                            .then((e) => {
+                                                                console.log(e);
+                                                                sessionStorage.setItem('TOKEN', e.accessToken);
+                                                                sessionStorage.setItem('USERNAME', e.username);
+                                                                sessionStorage.setItem('USERID', e.userId);
+                                                                sessionStorage.setItem('roles', e.role[0])
+
+                                                                window.location.href = '/';
+                                                            })
+                                                            .catch(() => {
+                                                                    setFailedAccount("Username or password is not correct")
+                                                                }
+                                                            );
                                                     }}
                                             >
                                                 <Form>

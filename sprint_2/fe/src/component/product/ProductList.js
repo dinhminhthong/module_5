@@ -4,6 +4,9 @@ import {findAll, searchName} from "../../service/ProductService";
 import Navbar from "../home/Navbar";
 import {CartContext, CartProvider} from "../../context/CartContext"
 import {Formik,Form,Field} from "formik";
+import "../product/style.css"
+import * as ProductService from "../../service/ProductService";
+
 
 function ProductList() {
     const [product, setProduct] = useState([]);
@@ -12,7 +15,7 @@ function ProductList() {
     const [itemsPerLoad, setItemsPerLoad] = useState(3);// số sản phẩm bạn muốn hiển thị sau khi bấm load more
     useEffect(() => {
         const getALl = async () => {
-            let rs = await findAll()
+            let rs = await ProductService.findAllProduct()
             setProduct(rs)
 
         }
@@ -285,20 +288,37 @@ function ProductList() {
                     <h6 className="text-primary text-uppercase">Products</h6>
                     <h1 className="display-5">Our Fresh &amp; Organic Products</h1>
                 </div>
-                <Formik initialValues={{name:""}}
-                        onSubmit={(value)=>{
-                            const search = async()=>{
-                                let rs = await searchName(value.name);
-                                setProduct(rs);
-                            }
-                            search()
-                        }}>
-                    <Form>
-                        <label htmlFor="">Tìm kiếm</label>
-                        <Field type="input" name="name"/>
-                        <button type="submit" className="btn btn-primary btn-sm">Tìm kiếm</button>
-                    </Form>
-                </Formik>
+                {/*<Formik initialValues={{name:""}}*/}
+                {/*        onSubmit={(value)=>{*/}
+                {/*            const search = async()=>{*/}
+                {/*                let rs = await searchName(value.name);*/}
+                {/*                setProduct(rs);*/}
+                {/*            }*/}
+                {/*            search()*/}
+                {/*        }}>*/}
+                {/*    <Form>*/}
+                {/*        /!*<label htmlFor="">Tìm kiếm</label>*!/*/}
+                {/*        /!*<Field type="input" name="name" placeholder='tìm kiếm' style={{padding: "0px", border: "1px solid black", height: "100%"}}/>*!/*/}
+                {/*        /!*<button type="submit" className="btn btn-primary btn-sm" style={{marginLeft: "10px"}}>Tìm kiếm</button>*!/*/}
+
+                {/*            /!* Hello world *!/*/}
+                {/*            <div className="d-flex justify-content-center h-100" style={{marginBottom: "50px"}}>*/}
+                {/*                <div className="search">*/}
+                {/*                    <Field*/}
+                {/*                        className="search_input"*/}
+                {/*                        type="input"*/}
+                {/*                        name="name"*/}
+                {/*                        placeholder="Search here..."*/}
+                {/*                        style={{color:"black"}}*/}
+                {/*                    />*/}
+                {/*                    <button type="submit" className="search_icon">*/}
+                {/*                        <i className="fa fa-search" />*/}
+                {/*                    </button>*/}
+                {/*                </div>*/}
+                {/*            </div>*/}
+                {/*    </Form>*/}
+                {/*</Formik>*/}
+
                 <div className="row">
                     {
                         product?.slice(0, itemsToShow)?.map((value, index) => (
