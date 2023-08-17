@@ -3,14 +3,13 @@ import {useNavigate} from "react-router";
 import {Formik, Form, Field, ErrorMessage} from "formik";
 import {postLogin} from "../../service/Service";
 import * as Yup from "yup";
+
 function Login() {
     const navigate = useNavigate();
     const [failedAccount, setFailedAccount] = useState(null);
-
+    const [loggedInUser, setLoggedInUser] = useState(null);
     let data = sessionStorage.getItem("TOKEN");
-    if(data) {
-        navigate('/product');
-    }
+
 
     return (
         <>
@@ -40,60 +39,65 @@ function Login() {
                                             </div>
                                             <Formik initialValues={{username: '', password: ''}}
                                                     validationSchema={Yup.object({
-                                                        username: Yup.string().required("phải điền username để đăng nhập"),
-                                                        password:Yup.string().required("không được bỏ trống")
+                                                        username: Yup.string().required("username cannot be left blank"),
+                                                        password: Yup.string().required("Password cannot be left blank")
                                                     })}
-                                                    onSubmit={(values) => {
+                                                    onSubmit={(values,{setSubmitting}) => {
                                                         postLogin(values)
                                                             .then((e) => {
                                                                 console.log(e);
+                                                                setFailedAccount(null)
                                                                 sessionStorage.setItem('TOKEN', e.accessToken);
                                                                 sessionStorage.setItem('USERNAME', e.username);
                                                                 sessionStorage.setItem('USERID', e.userId);
-                                                                sessionStorage.setItem('roles', e.role[0])
-
-                                                                window.location.href = '/';
+                                                                sessionStorage.setItem('roles', e.roles)
+                                                                setLoggedInUser(e);
+                                                                window.location.href = '/product';
+                                                                setSubmitting(false)
                                                             })
+
                                                             .catch(() => {
                                                                     setFailedAccount("Username or password is not correct")
                                                                 }
                                                             );
                                                     }}
                                             >
+                                                {({isSubmitting})=>(
                                                 <Form>
                                                     <p>Please login to your account</p>
                                                     <div>
-                                                    <div className="form-outline mb-4">
-                                                        <Field
-                                                            type="text"
-                                                            id="username"
-                                                            name="username"
-                                                            className="form-control"
-                                                            placeholder="username"
-                                                        />
-                                                    </div>
-                                                        <ErrorMessage
-                                                            name="username"
-                                                            component="div"
-                                                            className="text-danger"
-                                                        />
+                                                        <div className="form-outline mb-4">
+                                                            <Field
+                                                                type="text"
+                                                                id="username"
+                                                                name="username"
+                                                                className="form-control"
+                                                                placeholder="username"
+                                                            />
+                                                            <ErrorMessage
+                                                                name="username"
+                                                                component="div"
+                                                                className="text-danger"
+                                                            />
+                                                        </div>
+
                                                     </div>
 
                                                     <div>
-                                                    <div className="form-outline mb-4">
-                                                        <Field
-                                                            type="password"
-                                                            id="password"
-                                                            name="password"
-                                                            className="form-control"
-                                                            placeholder="password"
-                                                        />
-                                                    </div>
-                                                        <ErrorMessage
-                                                            name="password"
-                                                            component="div"
-                                                            className="text-danger"
-                                                        />
+                                                        <div className="form-outline mb-4">
+                                                            <Field
+                                                                type="password"
+                                                                id="password"
+                                                                name="password"
+                                                                className="form-control"
+                                                                placeholder="password"
+                                                            />
+                                                            <ErrorMessage
+                                                                name="password"
+                                                                component="div"
+                                                                className="text-danger"
+                                                            />
+                                                        </div>
                                                     </div>
                                                     <div className="text-center pt-1 mb-1 pb-1">
                                                         <button
@@ -105,6 +109,8 @@ function Login() {
                                                         </button>
                                                     </div>
                                                 </Form>
+
+                                                    )}
 
                                             </Formik>
                                             <div className="text-center pt-1 mb-1 pb-1">

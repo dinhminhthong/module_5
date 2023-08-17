@@ -1,24 +1,70 @@
 import {NavLink} from "react-router-dom";
-import React, {useEffect, useState} from "react";
-import {findAll, searchName} from "../../service/ProductService";
-import Navbar from "../home/Navbar";
+import React, {useContext, useEffect, useState} from "react";
+
 import {CartContext, CartProvider} from "../../context/CartContext"
 import {Formik,Form,Field} from "formik";
 import "../product/style.css"
 import * as ProductService from "../../service/ProductService";
+import * as UserService from "../../service/userService";
+import {QuantityContext} from "../home/QuantityContext";
+import {useNavigate} from "react-router";
+import * as Swal from "sweetalert2";
+import axios from 'axios';
 
 
 function ProductList() {
     const [product, setProduct] = useState([]);
-    const [cart, setCart] = useState([]);
-    const [itemsToShow, setItemsToShow] = useState(3); // Số sản phẩm hiển thị ban đầu
-    const [itemsPerLoad, setItemsPerLoad] = useState(3);// số sản phẩm bạn muốn hiển thị sau khi bấm load more
-    useEffect(() => {
-        const getALl = async () => {
-            let rs = await ProductService.findAllProduct()
-            setProduct(rs)
+    const { iconQuantity, setIconQuantity } = useContext(QuantityContext)
+    const [itemsToShow, setItemsToShow] = useState(4); // Số sản phẩm hiển thị ban đầu
+    const [itemsPerLoad, setItemsPerLoad] = useState(4);// số sản phẩm bạn muốn hiển thị sau khi bấm load more
+    const navigate = useNavigate();
+    const [userId, setUserId] = useState(0);
+    const username = sessionStorage.getItem('USERNAME');
+    const [amount, setAmount] = useState(1);
 
+    useEffect(() => {
+        const getUserName = async () => {
+            const rs = await UserService.findUserName(username);
+            setUserId(rs)
         }
+        getUserName();
+    }, []);
+
+    const addToCart = (productId, item) => {
+        if (!username) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Log in to see your Cart',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate('/login')
+        }else{
+            const apiUrl = `http://localhost:8080/api/cart/addToCart/${userId}/${productId}/${amount}`;
+            setIconQuantity(iconQuantity + 1)
+            axios.get(apiUrl)
+                .then(response => {
+                    Swal.fire({
+                        text: 'Add to cart successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                })
+                .catch(error => {
+                    console.error('Error adding item to cart:', error.response);
+                });
+        };
+    }
+
+    const handleAddToCartClick = (productId) => {
+        addToCart(productId);
+    };
+    const getALl = async () => {
+        let rs = await ProductService.findAllProduct()
+        setProduct(rs)
+
+    }
+    useEffect(() => {
         getALl()
     }, []);
 
@@ -26,62 +72,10 @@ function ProductList() {
         setItemsToShow(prevItems => prevItems + itemsPerLoad);
     };
 
-    const handleAddToCart = (productId) => {
-        cart.push({
-            id: productId,
-        });
-        console.log(cart);
-    }
+
 
     return (
         <CartProvider>
-            <div className="container-fluid px-5 d-none d-lg-block">
-                <div className="row gx-5 py-3 align-items-center">
-                    <div className="col-lg-3">
-                        <div className="d-flex align-items-center justify-content-start">
-                            <i className="bi bi-phone-vibrate fs-1 text-primary me-2"/>
-                            <h2 className="mb-0">+0703510324</h2>
-                        </div>
-                    </div>
-                    <div className="col-lg-6">
-                        <div className="d-flex align-items-center justify-content-center">
-                            <a href="home.html" className="navbar-brand ms-lg-5">
-                                <h1 className="m-0 display-4 text-primary">
-                                    <span className="text-secondary">Cow</span>Farm
-                                </h1>
-                            </a>
-                        </div>
-                    </div>
-                    <div className="col-lg-3">
-                        <div className="d-flex align-items-center justify-content-end">
-                            <a
-                                className="btn btn-primary btn-square rounded-circle me-2"
-                                href="#"
-                            >
-                                <i className="fab fa-twitter"/>
-                            </a>
-                            <a
-                                className="btn btn-primary btn-square rounded-circle me-2"
-                                href="#"
-                            >
-                                <i className="fab fa-facebook-f"/>
-                            </a>
-                            <a
-                                className="btn btn-primary btn-square rounded-circle me-2"
-                                href="#"
-                            >
-                                <i className="fab fa-linkedin-in"/>
-                            </a>
-                            <a className="btn btn-primary btn-square rounded-circle" href="#">
-                                <i className="fab fa-instagram"/>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* Topbar End */}
-            {/* Navbar Start */}
-           <Navbar />
             <div className="container-fluid about pt-5">
                 <div className="container">
                     <div className="row gx-5">
@@ -288,53 +282,64 @@ function ProductList() {
                     <h6 className="text-primary text-uppercase">Products</h6>
                     <h1 className="display-5">Our Fresh &amp; Organic Products</h1>
                 </div>
-                {/*<Formik initialValues={{name:""}}*/}
-                {/*        onSubmit={(value)=>{*/}
-                {/*            const search = async()=>{*/}
-                {/*                let rs = await searchName(value.name);*/}
-                {/*                setProduct(rs);*/}
-                {/*            }*/}
-                {/*            search()*/}
-                {/*        }}>*/}
-                {/*    <Form>*/}
-                {/*        /!*<label htmlFor="">Tìm kiếm</label>*!/*/}
-                {/*        /!*<Field type="input" name="name" placeholder='tìm kiếm' style={{padding: "0px", border: "1px solid black", height: "100%"}}/>*!/*/}
-                {/*        /!*<button type="submit" className="btn btn-primary btn-sm" style={{marginLeft: "10px"}}>Tìm kiếm</button>*!/*/}
 
-                {/*            /!* Hello world *!/*/}
-                {/*            <div className="d-flex justify-content-center h-100" style={{marginBottom: "50px"}}>*/}
-                {/*                <div className="search">*/}
-                {/*                    <Field*/}
-                {/*                        className="search_input"*/}
-                {/*                        type="input"*/}
-                {/*                        name="name"*/}
-                {/*                        placeholder="Search here..."*/}
-                {/*                        style={{color:"black"}}*/}
-                {/*                    />*/}
-                {/*                    <button type="submit" className="search_icon">*/}
-                {/*                        <i className="fa fa-search" />*/}
-                {/*                    </button>*/}
-                {/*                </div>*/}
-                {/*            </div>*/}
-                {/*    </Form>*/}
-                {/*</Formik>*/}
+                <Formik initialValues={{name:''}}
+                        onSubmit={(value)=>{
+                            const search = async()=>{
+                            let rs = await ProductService.searchName(value.name)
+                            if (rs.length===0){
+                                Swal.fire({
+                                            title: 'Notification!',
+                                            text: `No products found`,
+                                            icon: 'error',
+                                            confirmButtonText: 'OK',
+                                        });
+                                getALl()
+                            }
+                                setProduct(rs);
+                            }
+                            search()
+
+                        }}
+                >
+                    <Form>
+                    <div className="container h-100">
+                        <div className="d-flex justify-content-center h-100">
+                            <div className="search">
+                                <Field
+                                    className="search_input"
+                                    id='name'
+                                    name="name"
+                                    placeholder="Search here..."
+                                    style={{color:"black"}}
+                                />
+                                <button type='submit' className="search_icon">
+                                    <i className="fa fa-search" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    </Form>
+
+                </Formik>
+                <br/>
+                <br/>
+
 
                 <div className="row">
                     {
                         product?.slice(0, itemsToShow)?.map((value, index) => (
-                            <div className="col-4" key={index}>
-                                <img src={value.image} alt="Sản phẩm nhà làm" className="card-img-top"/>
-                                <div className="card-body">
-                                    <h5 className="card-title">{value.productName}</h5>
-                                    <p className="card-text">{value.price}$</p>
+                            <div className="col-3 mb-5 " key={index}>
+                                <img src={value.image} alt="Sản phẩm nhà làm" className="card-img-top" style={{marginTop:30,height:"270",width:"270px", margin: " 0 auto",display: "block"}}/>
+                                <div className="card-body" style={{textAlign: "center"}}>
+                                    <h4 className="card-title">{value.productName}</h4>
+                                    <h6 className="card-text">{Intl.NumberFormat().format(value.price)} VND</h6>
                                 </div>
-                                <CartContext.Consumer>
-                                    {({addToCart }) => <button className="btn btn-secondary" onClick={()=> {
-                                        addToCart(value)
-                                    }}> Add to Cart </button>}
-                                </CartContext.Consumer>
+                                <div style={{textAlign: "center"}}>
+                                    <a className="btn btn-secondary" style={{margin: "0 auto"}} onClick={() => handleAddToCartClick(value.productId)}> Add to Cart </a>
 
-                                <NavLink to={`/detail/${value.productId}`} className='btn btn-primary'>Detail</NavLink>
+                                    <NavLink to={`/detail/${value.productId}`} className='btn btn-primary'>Detail</NavLink>
+                                </div>
                             </div>
                         ))
                     }
@@ -347,158 +352,7 @@ function ProductList() {
                     </div>
                 )}
             </div>
-            {/* Products End */}
-            <div className="container-fluid bg-footer bg-primary text-white mt-5">
-                <div className="container">
-                    <div className="row gx-5">
-                        <div className="col-lg-8 col-md-6">
-                            <div className="row gx-5">
-                                <div className="col-lg-4 col-md-12 pt-5 mb-5">
-                                    <h4 className="text-white mb-4">Get In Touch</h4>
-                                    <div className="d-flex mb-2">
-                                        <i className="bi bi-geo-alt text-white me-2"/>
-                                        <p className="text-white mb-0">123 Street, New York, USA</p>
-                                    </div>
-                                    <div className="d-flex mb-2">
-                                        <i className="bi bi-envelope-open text-white me-2"/>
-                                        <p className="text-white mb-0">info@example.com</p>
-                                    </div>
-                                    <div className="d-flex mb-2">
-                                        <i className="bi bi-telephone text-white me-2"/>
-                                        <p className="text-white mb-0">+0703510324</p>
-                                    </div>
-                                    <div className="d-flex mt-4">
-                                        <a
-                                            className="btn btn-secondary btn-square rounded-circle me-2"
-                                            href="#"
-                                        >
-                                            <i className="fab fa-twitter"/>
-                                        </a>
-                                        <a
-                                            className="btn btn-secondary btn-square rounded-circle me-2"
-                                            href="#"
-                                        >
-                                            <i className="fab fa-facebook-f"/>
-                                        </a>
-                                        <a
-                                            className="btn btn-secondary btn-square rounded-circle me-2"
-                                            href="#"
-                                        >
-                                            <i className="fab fa-linkedin-in"/>
-                                        </a>
-                                        <a
-                                            className="btn btn-secondary btn-square rounded-circle"
-                                            href="#"
-                                        >
-                                            <i className="fab fa-instagram"/>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                                    <h4 className="text-white mb-4">Quick Links</h4>
-                                    <div className="d-flex flex-column justify-content-start">
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Home
-                                        </a>
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            About Us
-                                        </a>
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Our Services
-                                        </a>
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Meet The Team
-                                        </a>
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Latest Blog
-                                        </a>
-                                        <a className="text-white" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Contact Us
-                                        </a>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                                    <h4 className="text-white mb-4">Popular Links</h4>
-                                    <div className="d-flex flex-column justify-content-start">
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Home
-                                        </a>
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Product
-                                        </a>
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Login
-                                        </a>
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Meet The Team
-                                        </a>
-                                        <a className="text-white mb-2" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Latest Blog
-                                        </a>
-                                        <a className="text-white" href="#">
-                                            <i className="bi bi-arrow-right text-white me-2"/>
-                                            Contact Us
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 mt-lg-n5">
-                            <div
-                                className="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-secondary p-5">
-                                <h4 className="text-white">Newsletter</h4>
-                                <h6 className="text-white">Subscribe Our Newsletter</h6>
-                                <p>Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
-                                <form action="">
-                                    <div className="input-group">
-                                        <input
-                                            type="text"
-                                            className="form-control border-white p-3"
-                                            placeholder="Your Email"
-                                        />
-                                        <button className="btn btn-primary">Sign Up</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="x bg-dark text-white py-4">
-                <div className="container text-center">
-                    <p className="mb-0">
-                        ©{" "}
-                        <a className="text-secondary fw-bold" href="#">
-                            Your Site Name
-                        </a>
-                        . All Rights Reserved. Designed by{" "}
-                        <a className="text-secondary fw-bold" href="https://htmlcodex.com">
-                            HTML Codex
-                        </a>
-                    </p>
-                    <br/>
-                    Distributed By:{" "}
-                    <a
-                        className="text-secondary fw-bold"
-                        href="https://themewagon.com"
-                        target="_blank"
-                    >
-                        ThemeWagon
-                    </a>
-                </div>
-            </div>
-            {/* Footer End */}
+
             {/* Back to Top */}
             <a href="#" className="btn btn-secondary py-3 fs-4 back-to-top">
                 <i className="bi bi-arrow-up"/>

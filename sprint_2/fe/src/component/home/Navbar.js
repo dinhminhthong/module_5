@@ -1,13 +1,16 @@
 import {Link, NavLink} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
 import * as UserService from "../../service/userService";
+import {QuantityContext} from "./QuantityContext";
 
 
 const Navbar = () => {
     const [userId, setUserId] = useState(0);
     const username = sessionStorage.getItem('USERNAME');
+    const roles = sessionStorage.getItem('roles');
 
-    // const { iconQuantity, setIconQuantity } = useContext(QuantityContext)
+
+    const { iconQuantity, setIconQuantity } = useContext(QuantityContext)
     useEffect(() => {
         const getUserName = async () => {
             const rs = await UserService.findUserName(username);
@@ -26,8 +29,10 @@ const Navbar = () => {
 
     return (
         <>
+            <div className="position-fixed w-100" style={{ zIndex:"1000"}}>
 
-            {sessionStorage.getItem("USERNAME") === "nghia123" && (
+
+            {roles === "ADMIN"  &&(
                 <>
                     <nav
                         className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -35,7 +40,7 @@ const Navbar = () => {
                     >
                         <div className="container" style={{marginTop: -13, marginRight: "22%"}}>
                             <a className="navbar-brand" href="/">
-                               CowFarm
+                               <img style={{width:"100px"}} src="https://o.remove.bg/downloads/bae24b2d-4525-4af8-a027-5a9427f87457/images-removebg-preview.png"/>
                             </a>
                             <button
                                 className="navbar-toggler"
@@ -59,9 +64,9 @@ const Navbar = () => {
                                     <li className="nav-item dropdown">
                                         <a
                                             className="nav-link "
-                                            href="/shop"
+                                            href="/product"
                                         >
-                                            Shop
+                                            Product
                                         </a>
 
                                     </li>
@@ -74,10 +79,10 @@ const Navbar = () => {
                                     <NavLink to={`/cart/${username}`}>
                                         <li className="nav-item cta cta-colored">
 
-                                            {/*<a className="nav-link">*/}
-                                            {/*    <span className="icon-shopping_cart"/>*/}
-                                            {/*    [{iconQuantity}]*/}
-                                            {/*</a>*/}
+                                            <a className="nav-link">
+                                                <i  className="fa">&#xf07a;</i>
+                                                [{iconQuantity}]
+                                            </a>
 
 
                                         </li>
@@ -107,14 +112,13 @@ const Navbar = () => {
             {
                 sessionStorage.getItem("roles") === "USER" && (
                     <>
-
                         <nav
                             className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
                             id="ftco-navbar" style={{height: "10%"}}
                         >
                             <div className="container" style={{marginTop: -13, marginRight: "22%"}}>
                                 <a className="navbar-brand" href="/">
-                               CowFarm
+                                    <img style={{width:"100px"}} src="https://o.remove.bg/downloads/bae24b2d-4525-4af8-a027-5a9427f87457/images-removebg-preview.png"/>
                                 </a>
                                 <button
                                     className="navbar-toggler"
@@ -138,9 +142,9 @@ const Navbar = () => {
                                         <li className="nav-item dropdown">
                                             <a
                                                 className="nav-link "
-                                                href="/shop"
+                                                href="/product"
                                             >
-                                                Shop
+                                                Product
                                             </a>
 
                                         </li>
@@ -148,13 +152,10 @@ const Navbar = () => {
 
                                         <NavLink to={`/cart/${username}`}>
                                             <li className="nav-item cta cta-colored">
-
-                                                {/*<a className="nav-link">*/}
-                                                {/*    <span className="icon-shopping_cart"/>*/}
-                                                {/*    [{iconQuantity}]*/}
-                                                {/*</a>*/}
-
-
+                                                <a className="nav-link">
+                                                    <i  className="fa">&#xf07a;</i>
+                                                    [{iconQuantity}]
+                                                </a>
                                             </li>
                                         </NavLink>
 
@@ -186,7 +187,7 @@ const Navbar = () => {
                         >
                             <div className="container" style={{marginTop: -13, marginRight: "22%"}}>
                                 <a className="navbar-brand" href="/">
-                                    HypeSneaker
+                                    <img style={{width:"100px"}} src="https://o.remove.bg/downloads/bae24b2d-4525-4af8-a027-5a9427f87457/images-removebg-preview.png"/>
                                 </a>
                                 <button
                                     className="navbar-toggler"
@@ -210,18 +211,16 @@ const Navbar = () => {
                                         <li className="nav-item dropdown">
                                             <a
                                                 className="nav-link "
-                                                href="/shop"
+                                                href="/product"
                                             >
-                                                Shop
+                                                Product
                                             </a>
 
                                         </li>
-
-
                                         <li style={{width: 84}} className="nav-item">
                                             <a style={{marginTop: "-4%"}} href="/login" className="nav-link">
                                                 <img style={{width: 25}}
-                                                     src="https://o.remove.bg/downloads/b3a8cfa0-1b4d-4c26-bc4e-07adb1c203a6/avatar-removebg-preview.png"></img>
+                                                     src="https://cdn-icons-png.flaticon.com/512/6681/6681204.png"/>
                                             </a>
                                         </li>
 
@@ -233,6 +232,7 @@ const Navbar = () => {
                     </>
                 )
             }
+            </div>
 
         </>
     );

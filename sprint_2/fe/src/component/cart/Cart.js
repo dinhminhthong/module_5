@@ -1,281 +1,255 @@
-import React from "react";
-import Navbar from "../home/Navbar";
-import Hearder from "../home/Hearder";
+import React, {useContext} from "react";
+import {PayPalScriptProvider, PayPalButtons} from '@paypal/react-paypal-js';
+import  {useState, useEffect} from 'react';
+import Swal from 'sweetalert2';
+import * as CartService from "../../service/CartService";
+import * as UserService from "../../service/userService";
+import {useNavigate, useParams} from 'react-router';
+import {QuantityContext} from "../home/QuantityContext";
+
 
 
 const Cart = () => {
+    const [userId, setUserId] = useState(0);
+    const [cart, setCart] = useState([]);
+    const username = sessionStorage.getItem('USERNAME');
+    const navigate = useNavigate();
+    const param = useParams();
+    const { iconQuantity, setIconQuantity } = useContext(QuantityContext)
+
+    const [productQuantities, setProductQuantities] = useState({});
+    const calculateTotalSum = () => {
+        let totalSum = 0;
+        for (const item of cart) {
+            const productQuantity = productQuantities[item.productId] || item.amount;
+            totalSum += item.price * productQuantity;
+        }
+        return totalSum;
+    };
+    const handleQuantityChange = (productId, newQuantity) => {
+        setProductQuantities((prevQuantities) => ({
+            ...prevQuantities,
+            [productId]: newQuantity,
+        }));
+    };
+    const increaseQuantity = (productId) => {
+        const newQuantity = (productQuantities[productId] || 0) + 1;
+        handleQuantityChange(productId, newQuantity);
+    };
+    const decreaseQuantity = (productId) => {
+        if (productQuantities[productId] > 1) {
+            const newQuantity = productQuantities[productId] - 1;
+            handleQuantityChange(productId, newQuantity);
+        }
+    };
+
+    useEffect(() => {
+        const getUserName = async () => {
+            const rs = await UserService.findUserName(username);
+
+            setUserId(rs)
+        }
+        getUserName();
+    }, []);
+
+
+
+    useEffect(() => {
+        const listCard = async () => {
+            const rs = await CartService.getAllCart(param.username);
+
+            setCart(rs)
+
+        }
+        listCard();
+    }, []);
+    console.log(cart);
+
+    // if (!sessionStorage.getItem("roles")) {
+    //
+    //     Swal.fire({
+    //         title: 'Notification!',
+    //         text: `You must login to see your cart`,
+    //         icon: 'error',
+    //         confirmButtonText: 'OK',
+    //     });
+    //     navigate("/login")
+    //     return null
+    //
+    // }
+
+    const deleteCartDetail = (cartId, productId, productName, cartDetailId) => {
+        // Call the API to delete the cart detail
+        CartService.deleteCartDetail(cartId, productId).then(() => {
+            // Update the cart state to remove the deleted item
+            setCart((prevCart) => prevCart.filter((item) => item.cartDetailId !== cartDetailId));
+            setIconQuantity();
+            Swal.fire({
+                title: 'Thông báo!',
+                text: `Bạn vừa xoá mặt hàng ${productName}`,
+                icon: 'success',
+                confirmButtonText: 'OK',
+            });
+        });
+    };
+
     return (
-<>
-    <Hearder/>
-    <Navbar/>
-        <div className="shopping-cart">
+        <>
+            <div>
+             {/*<Topbar/>*/}
 
-            {/* Container */}
-            <div className="container container--type-2">
-                {/* Second container */}
-                <div className="container">
+             <br/>
+                <h1 className='text-center'>Cowfarm Cart</h1>
+                <section className="ftco-section ftco-cart">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12 ">
+                                {cart.length === 0 ? (
+                                    <div className="text-center m-5">
+                                        <img
+                                            src="https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png"
+                                            alt="Empty Cart"
+                                            height="210"
+                                            width="300"
+                                        />
+                                        <h1 style={{ textAlign: "center" }}>EMPTY CART</h1>
+                                    </div>
+                                ) : (
 
-                    {/* Title */}
-                    <h1 className="shopping-cart__title">CowFarm Cart</h1>
-                    {/* End title */}
-                    {/* Row */}
-                    <div className="row">
-                        {/* Left */}
-                        <div className="col-lg-7 col-xl-8">
-                            {/* Cart container */}
-                            <div className="shopping-cart__container">
-                                {/*- Table responsive */}
-                                <div className="table-responsive">
-                                    {/* Table */}
-                                    <table className="shopping-cart__table">
-                                        <thead>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Qty</th>
-                                            <th>Subtotal</th>
-                                            <th />
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {/* Cart product item */}
-                                        <tr>
-                                            <td>
-                                                <div className="shopping-cart__product">
-                                                    <div className="cart-product__image">
-                                                        <a href="product.html">
-                                                            <img
-                                                                alt="Image"
-                                                                data-sizes="auto"
-                                                                data-srcset="http://demo2.ninethemes.net/durotan20/html/assets/products/1/10a.jpg 800w"
-                                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvYR2AqibiV8yutD1E1ekNBgHMz-9Llawtgl-E3TtFJ6Mj_Mxm"
-                                                                className="lazyload"
-                                                            />
+                                    <div className="cart-list">
+                                        <table className="table">
+                                            <thead className="thead-primary">
+                                            <tr className="text-center">
+                                                <th>&nbsp;</th>
+                                                <th>&nbsp;</th>
+                                                <th>Product</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {cart?.map((item, index) => (
+                                                <tr className="text-center" key={index}>
+                                                    <td className="product-remove">
+                                                        <a href="#" onClick={() => deleteCartDetail(item.cartId, item.productId, item.productName, item.cartDetailId)}>
+                                                            <i style={{ fontSize: '24px', color:"red"}} className='fas'>&#xf1f8;</i>
                                                         </a>
-                                                    </div>
-                                                    <div className="cart-product__title-and-variant">
-                                                        <h3 className="cart-product__title">
-                                                            <a href="product.html">
-                                                                fresh fruit
-                                                            </a>
-                                                        </h3>
-                                                        <div className="cart-product__variant">
-                                                            Grey, M
+                                                    </td>
+                                                    <td className="image-prod">
+
+                                                        <div >
+                                                            <img style={{ width: 140 }} src={item.image}></img>
                                                         </div>
-                                                        <div className="cart-product__action">
-                                                            <a href="#">Edit</a>
+
+                                                    </td>
+                                                    <td className="product-name">
+                                                        <h3>{item.productName}</h3>
+
+                                                    </td>
+
+
+                                                    <td className="price">
+                                                        <span style={{ fontFamily: "Cabin" }}> {new Intl.NumberFormat().format(item.price)} VND</span>
+                                                    </td>
+                                                    <td>
+                                                        <div style={{ marginTop: 8,marginLeft:160 }}><div style={{ display: "flex",  }}>
+                                                                <button style={{ width: 62 }} onClick={() => decreaseQuantity(item.productId)}>
+                                                                         -
+                                                                </button>
+                                                                <input
+                                                                    style={{ width: '40px', textAlign: 'center' }}
+                                                                    type="text"
+                                                                    name="quantity"
+                                                                    className="quantity form-control input-number"
+                                                                    defaultValue={item.amount}
+                                                                    min={1}
+                                                                    max={100}
+                                                                    value={productQuantities[item.productId] || 1}
+                                                                    readOnly
+                                                                />
+                                                                <button style={{ width: 62 }} onClick={() => increaseQuantity(item.productId)}>
+                                                                    +
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__price">$700</div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__quantity-field">
-                                                    <div className="quantity-field__minus">
-                                                        <a href="#">-</a>
-                                                    </div>
-                                                    <input
-                                                        type="text"
-                                                        defaultValue={1}
-                                                        className="quantity-field__input"
-                                                    />
-                                                    <div className="quantity-field__plus">
-                                                        <a href="#">+</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__price">$700</div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__delete">
-                                                    <a href="#">
-                                                        <i className="lnil lnil-close" />
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        {/* End cart product item */}
-                                        {/* Cart product item */}
-                                        <tr>
-                                            <td>
-                                                <div className="shopping-cart__product">
-                                                    <div className="cart-product__image">
-                                                        <a href="product.html">
-                                                            <img
-                                                                alt="Image"
-                                                                data-sizes="auto"
-                                                                data-srcset="http://demo2.ninethemes.net/durotan20/html/assets/products/1/11a.jpg 800w"
-                                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvYR2AqibiV8yutD1E1ekNBgHMz-9Llawtgl-E3TtFJ6Mj_Mxm"
-                                                                className="lazyload"
-                                                            />
-                                                        </a>
-                                                    </div>
-                                                    <div className="cart-product__title-and-variant">
-                                                        <h3 className="cart-product__title">
-                                                            <a href="product.html">fresh vegetable</a>
-                                                        </h3>
-                                                        <div className="cart-product__variant">
-                                                        </div>
-                                                        <div className="cart-product__action">
-                                                            <a href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__price">$700</div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__quantity-field">
-                                                    <div className="quantity-field__minus">
-                                                        <a href="#">-</a>
-                                                    </div>
-                                                    <input
-                                                        type="text"
-                                                        defaultValue={1}
-                                                        className="quantity-field__input"
-                                                    />
-                                                    <div className="quantity-field__plus">
-                                                        <a href="#">+</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__price">$700</div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__delete">
-                                                    <a href="#">
-                                                        <i className="lnil lnil-close" />
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        {/* End cart product item */}
-                                        {/* Cart product item */}
-                                        <tr>
-                                            <td>
-                                                <div className="shopping-cart__product">
-                                                    <div className="cart-product__image">
-                                                        <a href="product.html">
-                                                            <img
-                                                                alt="Image"
-                                                                data-sizes="auto"
-                                                                data-srcset="http://demo2.ninethemes.net/durotan20/html/assets/products/1/12a.jpg 800w"
-                                                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvYR2AqibiV8yutD1E1ekNBgHMz-9Llawtgl-E3TtFJ6Mj_Mxm"
-                                                                className="lazyload"
-                                                            />
-                                                        </a>
-                                                    </div>
-                                                    <div className="cart-product__title-and-variant">
-                                                        <h3 className="cart-product__title">
-                                                            <a href="product.html">
-                                                                clean fruit
-                                                            </a>
-                                                        </h3>
-                                                        <div className="cart-product__action">
-                                                            <a href="#">Edit</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__price">$700</div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__quantity-field">
-                                                    <div className="quantity-field__minus">
-                                                        <a href="#">-</a>
-                                                    </div>
-                                                    <input
-                                                        type="text"
-                                                        defaultValue={1}
-                                                        className="quantity-field__input"
-                                                    />
-                                                    <div className="quantity-field__plus">
-                                                        <a href="#">+</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__price">$700</div>
-                                            </td>
-                                            <td>
-                                                <div className="cart-product__delete">
-                                                    <a href="#">
-                                                        <i className="lnil lnil-close" />
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        {/* End cart product item */}
-                                        </tbody>
-                                    </table>
-                                    {/* End table */}
-                                </div>
-                                {/* End table responsive */}
+                                                    </td>
+                                                    <td className="total">
+                                                        {Intl.NumberFormat().format(item.price * (productQuantities[item.productId] || item.amount))} VND
+                                                    </td>
+                                                </tr>
+
+                                            ))}
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                )}
                             </div>
-                            {/* End cart container */}
                         </div>
-                        {/* End left */}
-                        {/* Right */}
-                        <div className="col-lg-5 col-xl-4">
-                            {/* Order summary */}
-                            <div className="shopping-cart__order-summary">
-                                {/* Background */}
-                                <div className="order-summary__background">
-                                    {/* Title */}
-                                    <h3 className="order-summary__title">Order Summary</h3>
-                                    {/* End title */}
-                                    {/* Subtotal */}
-                                    <div className="order-summary__subtotal">
-                                        <div className="summary-subtotal__title">Subtotal</div>
-                                        <div className="summary-subtotal__price">$252.47</div>
-                                    </div>
-                                    {/* End subtotal */}
-                                    {/* Delivery method */}
-                                    <div className="order-summary__delivery-method">
-                                        <select>
-                                            <option>Standard Shipping ($20)</option>
-                                            <option>Fast Shipping ($40)</option>
-                                        </select>
-                                    </div>
-                                    {/* End delivery method */}
-                                    {/* Total */}
-                                    <div className="order-summary__total">
-                                        <div className="summary-total__title">Total</div>
-                                        <div className="summary-total__price">$272.47</div>
-                                    </div>
-                                    {/* End total */}
-                                    {/* Proceed to checkout */}
-                                    <div className="order-summary__proceed-to-checkout">
-                                        <a href="checkout.html" className="second-button">
-                                            Proceed to checkout
-                                        </a>
-                                    </div>
-                                    {/* End proceed to checkout */}
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div className="row justify-content-start">
+                            <div className="col col-lg-5 col-md-6 mt-5 cart-wrap ">
+                                <div className="cart-total mb-3">
+                                    <h1>Cart Totals</h1>
+                                    <p className="d-flex">
+                                        <h5>Subtotal: </h5>
+                                        <span className="text-end">{Intl.NumberFormat().format(calculateTotalSum())} VND</span>
+                                    </p>
+
+                                    <p className="d-flex">
+                                        <h5>Ship:</h5>
+                                        <span className="text-end">30.000 VND</span>
+                                    </p>
+                                    <hr />
+                                    <p className="d-flex total-price">
+                                        <h5>Total: </h5>
+                                        <span className="text-end">{Intl.NumberFormat().format(calculateTotalSum() + 30000)} VND</span>
+                                    </p>
                                 </div>
-                                {/* End background */}
-                                {/* Action */}
-                                <div className="order-summary__action">
-                                    <a href="shop.html">Continue shopping</a>
-                                </div>
-                                {/* End action */}
+                                <PayPalScriptProvider>
+                                    <PayPalButtons
+                                        createOrder={(data, actions) => {
+                                            return actions.order.create({
+                                                purchase_units: [
+                                                    {
+                                                        amount: {
+                                                            value: calculateTotalSum(),
+                                                        },
+                                                    },
+                                                ],
+                                            });
+                                        }}
+                                        onApprove={(data, actions) => {
+                                            return actions.order.capture().then(function () {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'Payment success',
+                                                    showConfirmButton: false,
+                                                    timer: 1000,
+                                                });
+                                                navigate('/history')
+                                                const totalAmount = calculateTotalSum() + 30000;
+                                                CartService.saveHistory(userId, totalAmount).then(() => {
+                                                    // Clear the cart after successful payment and saving the history
+                                                    CartService.setCart(userId).then((updatedCartData) => {
+                                                        setCart(updatedCartData);
+                                                    });
+                                                });
+                                            });
+                                        }}
+                                    />
+                                </PayPalScriptProvider>
                             </div>
-                            {/* End order summary */}
                         </div>
-                        {/* End right */}
                     </div>
-                    {/* End row */}
-                </div>
-                {/* End second container */}
+                </section >
+
             </div>
-            {/* End container */}
-        </div>
-    </>
+        </>
     );
 };
 

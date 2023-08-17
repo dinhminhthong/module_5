@@ -57,3 +57,7 @@ export const getAllProductByType = async (type) => {
     const res = await axios.get(`http://localhost:8080/api/productByType/${type}`)
     return res.data;
 }
+export const searchName= async (productName)=>{
+    const res = await axios.get(`http://localhost:8080/api/search/?productName=${productName}`)
+    return res.data;
+}

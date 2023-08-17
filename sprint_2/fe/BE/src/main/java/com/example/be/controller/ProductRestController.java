@@ -39,8 +39,8 @@ public class ProductRestController {
     @Autowired
     private IPurchaseService iPurchaseService;
 
-    @GetMapping("/search/{productName}")
-    public ResponseEntity<List<Product>> listProduct1(@PathVariable("productName") String productName) {
+    @GetMapping("/search")
+    public ResponseEntity<List<Product>> listProduct1(@RequestParam("productName") String productName) {
         List<Product> listProduct = iProductService.searchByName(productName);
         return new ResponseEntity<>(listProduct, HttpStatus.OK);
     }
